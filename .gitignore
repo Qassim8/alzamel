@@ -1,0 +1,20 @@
+# التبعيات
+node_modules
+
+# مخرجات البناء
+.next
+out
+
+# البيئة
+.env*.local
+
+# سجلات ومؤقتات
+*.log
+npm-debug.log*
+
+# لقطات المراجعة (محلية فقط)
+.screenshots
+
+# نظام التشغيل
+.DS_Store
+Thumbs.db

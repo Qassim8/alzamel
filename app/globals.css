@@ -1,0 +1,383 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════
+   الزامل كلين — نظام التصميم
+   مستخرج من: AL ZAMIL CLEAN / BRAND IDENTITY — APPROVED EDITION
+   التوزيع المعتمد: 60% أبيض / 25% كحلي / 15% أزرقيات العلامة
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --c-turquoise: #02b8d2; /* تركواز */
+  --c-azure: #0299df; /* سماوي */
+  --c-blue: #027fd3; /* أزرق  */
+  --c-navy: #082f49; /* كحلي داعم */
+  --c-mist: #f2f8fa; /* خلفية هادئة */
+
+  --c-body: #13293a;
+  --c-muted: #5f7689;
+  --c-line: #e3edf2;
+
+  --grad-brand: linear-gradient(135deg, var(--c-turquoise), var(--c-blue));
+  --grad-navy: linear-gradient(160deg, #0c3c5c, var(--c-navy));
+
+  --nav-h: 76px;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 16px);
+}
+
+body {
+  @apply bg-white text-body font-sans antialiased;
+}
+
+::selection {
+  background-color: var(--c-azure);
+  color: #fff;
+}
+
+/* النص الأبيض لا يُستخدم فوق التركواز للكتابة الصغيرة — يعتمد الكحلي (قاعدة الهوية) */
+
+/* ─── تخطيط ─── */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-24;
+  }
+
+  /* ─── نصوص ─── */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[13px] font-bold tracking-wide text-primary;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply block h-px w-6 bg-primary/50;
+  }
+
+  .h-display {
+    @apply text-[1.9rem] sm:text-4xl lg:text-[2.85rem] font-bold  text-navy;
+  }
+  .h-section {
+    @apply text-[1.6rem] sm:text-[2.1rem] font-bold leading-snug text-navy;
+  }
+  .lead {
+    @apply text-[15px] sm:text-base leading-[2] text-muted;
+  }
+
+  /* ─── أزرار ─── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3
+           text-sm font-bold transition-all duration-300 ease-brand
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-azure focus-visible:ring-offset-2;
+  }
+  .btn-primary {
+    @apply btn text-white shadow-card hover:shadow-lift hover:-translate-y-0.5;
+    background-image: var(--grad-brand);
+    background-size: 160% 100%;
+    background-position: 0% 0;
+  }
+  .btn-primary:hover {
+    background-position: 100% 0;
+  }
+  .btn-navy {
+    @apply btn bg-navy text-white hover:bg-[#0c3c5c] hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply btn border border-line bg-white text-navy hover:border-azure/50 hover:text-primary;
+  }
+  .btn-white {
+    @apply btn bg-white text-navy hover:bg-mist hover:-translate-y-0.5;
+  }
+
+  /* ─── بطاقات ─── */
+  .card {
+    @apply rounded-brand border border-line bg-white shadow-card transition-all duration-300 ease-brand;
+  }
+  .card-hover {
+    @apply card hover:-translate-y-1 hover:border-azure/35 hover:shadow-lift;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white
+           px-3 py-1.5 text-[13px] font-semibold text-navy;
+  }
+
+  /* صندوق أيقونة بهوية العلامة */
+  .icon-box {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] text-xl text-white;
+    background-image: var(--grad-brand);
+  }
+  .icon-box-soft {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] bg-mist text-xl text-primary;
+  }
+
+  .divider-brand {
+    @apply block h-1 w-14 rounded-full;
+    background-image: var(--grad-brand);
+  }
+}
+
+@layer utilities {
+  .bg-brand-grad {
+    background-image: var(--grad-brand);
+  }
+  .bg-navy-grad {
+    background-image: var(--grad-navy);
+  }
+  .text-brand-grad {
+    background-image: var(--grad-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* شبكة خفيفة للخلفيات الهادئة — بلا حواف متعرجة */
+  .bg-grid {
+    background-image:
+      linear-gradient(to left, rgba(8, 47, 73, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(8, 47, 73, 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+}
+
+/* ─── ظهور العناصر عند التمرير ─── */
+/* الإخفاء مشروط بوجود جافاسكربت: بدونها يظهر المحتوى كاملاً. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── شريط متحرك ─── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   الهيرو — فقاعات صابون ملوّنة متحركة + إطار متموّج
+   ═══════════════════════════════════════════════════════════ */
+
+/* فقاعة صابون: حافة قزحية ملوّنة + لمعة بيضاء — واضحة فوق الخلفية السماوية */
+.bubble {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, auto);
+  width: var(--s, 60px);
+  height: var(--s, 60px);
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 255, 255, 0.18) 0 45%,
+    rgba(2, 184, 210, 0.16) 72%,
+    rgba(2, 127, 211, 0.42) 100%
+  );
+  box-shadow:
+    inset 0 0 0 1.5px rgba(2, 153, 223, 0.45),
+    inset -8px -10px 18px rgba(124, 58, 237, 0.16),
+    0 14px 30px -12px rgba(2, 127, 211, 0.5);
+  animation: bubble-float var(--d, 8s) ease-in-out var(--delay, 0s) infinite;
+  will-change: transform;
+}
+
+/* الحافة القزحية — تدور ببطء فتتلألأ ألوانها */
+.bubble::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    #6ed5e5,
+    #9e71ed,
+    #f47bb7,
+    #eecc75,
+    #7dd1de,
+    #76c6ec,
+    #62d1e2
+  );
+  -webkit-mask: radial-gradient(closest-side, transparent 66%, #000 100%);
+  mask: radial-gradient(closest-side, transparent 66%, #000 100%);
+  opacity: 0.7;
+  animation: bubble-spin 9s linear infinite;
+}
+
+/* اللمعة البيضاء */
+.bubble::after {
+  content: "";
+  position: absolute;
+  top: 13%;
+  left: 20%;
+  width: 30%;
+  height: 18%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0)
+  );
+  transform: rotate(-35deg);
+}
+
+/* فقاعات صاعدة من أسفل القسم */
+.bubble-rise {
+  top: auto;
+  bottom: calc(var(--s, 20px) * -1.5);
+  opacity: 0;
+  animation-name: bubble-rise;
+  animation-timing-function: linear;
+}
+
+/* تصغير الفقاعات على الجوال */
+@media (max-width: 639px) {
+  .bubble {
+    width: calc(var(--s, 60px) * 0.6);
+    height: calc(var(--s, 60px) * 0.6);
+  }
+}
+
+@keyframes bubble-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(12px, -22px, 0) scale(1.04);
+  }
+  50% {
+    transform: translate3d(-8px, -38px, 0) scale(0.97);
+  }
+  75% {
+    transform: translate3d(-14px, -14px, 0) scale(1.02);
+  }
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.5);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(22px, -220px, 0) scale(0.75);
+  }
+  50% {
+    transform: translate3d(-18px, -440px, 0) scale(0.9);
+  }
+  75% {
+    transform: translate3d(20px, -660px, 0) scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -880px, 0) scale(1.08);
+    opacity: 0;
+  }
+}
+
+@keyframes bubble-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* الشكل المتدرّج الذي "يتنفّس" خلف الصورة */
+.hero-blob-bg {
+  background-image: var(--grad-brand);
+  opacity: 0.9;
+  border-radius: 58% 42% 47% 53% / 46% 55% 45% 54%;
+  animation: hero-blob 14s ease-in-out infinite;
+}
+
+@keyframes hero-blob {
+  0%,
+  100% {
+    border-radius: 58% 42% 47% 53% / 46% 55% 45% 54%;
+    transform: rotate(-2deg);
+  }
+  33% {
+    border-radius: 40% 60% 58% 42% / 56% 40% 60% 44%;
+    transform: rotate(2deg) scale(1.02);
+  }
+  66% {
+    border-radius: 54% 46% 36% 64% / 38% 62% 48% 52%;
+    transform: rotate(-1deg) scale(0.99);
+  }
+}
+
+/* الإطار المنقّط المتموّج — النقاط تسري حول الصورة */
+.hero-wave-dash {
+  fill: none;
+  stroke: var(--c-azure);
+  stroke-width: 0.004;
+  stroke-linecap: round;
+  stroke-dasharray: 3 9;
+  opacity: 0.75;
+  animation: hero-dash 45s linear infinite;
+}
+
+@keyframes hero-dash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+/* ─── احترام تفضيل تقليل الحركة ─── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .marquee-track,
+  [class*="animate-"] {
+    animation: none !important;
+  }
+  .bubble,
+  .bubble::before,
+  .hero-blob-bg,
+  .hero-wave-dash {
+    animation: none !important;
+  }
+  .bubble-rise {
+    display: none !important;
+  }
+}
