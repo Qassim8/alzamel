@@ -17,7 +17,10 @@ export default function Method() {
     <section className="section">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal className="order-2 lg:order-1">
-          <span className="mb-5 eyebrow">طريقتنا</span>
+          <span className="mb-5 eyebrow">
+            <LogoMark className="h-3.5 w-auto" />
+            طريقتنا
+          </span>
           <h2 className="heading-section">
             لا نكتفي بالسطح —{" "}
             <span className="text-brand-grad">نعمل على العمق</span>
@@ -49,7 +52,7 @@ export default function Method() {
           <div className="relative">
             <div className="overflow-hidden rounded-panel shadow-lift">
               <Image
-                src="/images/outdoor-team.jpg"
+                src="/images/outdoor-team.webp"
                 alt="فريق الزامل كلين أثناء تنفيذ عملية تنظيف خارجية"
                 width={1000}
                 height={1500}

@@ -12,19 +12,42 @@ import {
 } from "react-icons/fa6";
 import { LogoMark } from "@/components/ui/Logo";
 import { COMPANY } from "@/lib/content/company";
+import { latin } from "@/lib/format";
 import { SERVICES } from "@/lib/content/services";
 import { WA_MESSAGES, whatsappLink } from "@/lib/whatsapp";
 
 const EMPTY = { name: "", phone: "", city: "", service: "", message: "" };
 
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+/** رقم جوال سعودي: ١٠ أرقام تبدأ بـ 05 — بعد تحويل الأرقام العربية. */
+const SAUDI_PHONE = /^05\d{8}$/;
+
 export default function ContactForm() {
   const [status, setStatus] = useState("idle");
   const [form, setForm] = useState(EMPTY);
+  const [phoneError, setPhoneError] = useState("");
 
-  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+  const set = (k) => (e) => {
+    if (k === "phone") setPhoneError("");
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    const phone = latin(form.phone).replace(/[\s-]/g, "");
+    if (!SAUDI_PHONE.test(phone)) {
+      setPhoneError("أدخل رقم جوال سعودي من ١٠ أرقام يبدأ بـ 05");
+      return;
+    }
+
+    // بلا مفتاح Web3Forms لا نرسل شيئاً — نوجّه الزائر إلى واتساب بدلاً من ذلك
+    if (!WEB3FORMS_KEY) {
+      setStatus("nokey");
+      return;
+    }
+
     setStatus("sending");
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -34,7 +57,7 @@ export default function ContactForm() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
+          access_key: WEB3FORMS_KEY,
           subject: `طلب خدمة جديد من موقع ${COMPANY.nameAr}`,
           from_name: form.name,
           name: form.name,
@@ -42,6 +65,7 @@ export default function ContactForm() {
           city: form.city,
           service: form.service,
           message: form.message,
+          botcheck: form.botcheck ?? "",
         }),
       });
       const data = await res.json();
@@ -117,10 +141,22 @@ export default function ContactForm() {
               inputMode="tel"
               dir="ltr"
               placeholder="05XXXXXXXX"
-              className={`${field} text-right`}
+              aria-invalid={phoneError ? "true" : undefined}
+              aria-describedby={phoneError ? "phone-error" : undefined}
+              className={`${field} text-right ${
+                phoneError ? "border-red-400 focus:border-red-500" : ""
+              }`}
               value={form.phone}
               onChange={set("phone")}
             />
+            {phoneError && (
+              <span
+                id="phone-error"
+                className="mt-1.5 block text-caption font-semibold text-red-600"
+              >
+                {phoneError}
+              </span>
+            )}
           </label>
         </div>
 
@@ -174,6 +210,19 @@ export default function ContactForm() {
           />
         </label>
 
+        {/* فخّ السبام — يدعمه Web3Forms؛ مخفي عن المستخدم والقارئ الصوتي */}
+        <input
+          type="checkbox"
+          name="botcheck"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="hidden"
+          onChange={(e) =>
+            setForm((f) => ({ ...f, botcheck: e.target.checked }))
+          }
+        />
+
         <button
           type="submit"
           disabled={status === "sending"}
@@ -183,18 +232,40 @@ export default function ContactForm() {
           {status === "sending" ? "جارٍ الإرسال…" : "إرسال الطلب"}
         </button>
 
-        {status === "success" && (
-          <p className="flex items-center gap-2.5 rounded-xl bg-mist px-4 py-3.5 text-small font-bold text-primary-ink">
-            <FaCircleCheck className="shrink-0 text-base" />
-            تم إرسال طلبك — سنتواصل معك قريباً.
-          </p>
-        )}
-        {status === "error" && (
-          <p className="flex items-center gap-2.5 rounded-xl bg-red-50 px-4 py-3.5 text-small font-bold text-red-600">
-            <FaTriangleExclamation className="shrink-0 text-base" />
-            تعذّر الإرسال. تواصل معنا مباشرة عبر واتساب.
-          </p>
-        )}
+        <div aria-live="polite" className="empty:hidden">
+          {status === "success" && (
+            <p className="flex items-center gap-2.5 rounded-xl bg-mist px-4 py-3.5 text-small font-bold text-primary-ink">
+              <FaCircleCheck className="shrink-0 text-base" />
+              تم إرسال طلبك — سنتواصل معك قريباً.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="flex items-center gap-2.5 rounded-xl bg-red-50 px-4 py-3.5 text-small font-bold text-red-700">
+              <FaTriangleExclamation className="shrink-0 text-base" />
+              تعذّر الإرسال. تواصل معنا مباشرة عبر واتساب.
+            </p>
+          )}
+          {status === "nokey" && (
+            <div className="rounded-xl bg-mist px-4 py-4">
+              <p className="flex items-center gap-2.5 text-small font-bold text-navy">
+                <FaTriangleExclamation className="shrink-0 text-base text-primary-ink" />
+                نموذج البريد غير مفعّل حالياً.
+              </p>
+              <p className="mt-1.5 text-caption text-muted">
+                أرسل بياناتك عبر واتساب — الرسالة جاهزة بما كتبته.
+              </p>
+              <a
+                href={whatsappLink(WA_MESSAGES.fromForm(form))}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 btn-primary w-full"
+              >
+                <FaWhatsapp className="text-base" />
+                إرسال عبر واتساب
+              </a>
+            </div>
+          )}
+        </div>
 
         <p className="text-center text-caption text-muted">
           بياناتك تُستخدم للرد على طلبك فقط.

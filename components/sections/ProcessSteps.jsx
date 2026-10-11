@@ -1,4 +1,5 @@
 import Reveal from "@/components/ui/Reveal";
+import { ar } from "@/lib/format";
 import { STEPS } from "@/lib/content/steps";
 
 export default function ProcessSteps({ tone = "light" }) {
@@ -19,15 +20,15 @@ export default function ProcessSteps({ tone = "light" }) {
           className={`relative rounded-brand p-6 transition-all duration-300 ease-brand ${
             dark
               ? "border border-white/10 bg-white/4 hover:bg-white/[.07]"
-              : "card-hover"
+              : "card"
           }`}
         >
           <span
-            className={`mb-5 flex h-12 w-12 items-center justify-center rounded-icon font-latin text-lead font-bold ${
-              dark ? "bg-turquoise text-navy" : "bg-brand-grad text-white"
+            className={`mb-5 flex h-12 w-12 items-center justify-center rounded-icon text-lead font-bold ${
+              dark ? "bg-turquoise text-navy" : "bg-action-grad text-white"
             }`}
           >
-            {s.num}
+            {ar(s.num)}
           </span>
           <h3
             className={`mb-2 text-base font-bold ${dark ? "text-white" : "text-navy"}`}

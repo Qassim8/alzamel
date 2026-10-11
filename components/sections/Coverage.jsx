@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { LogoMark } from "@/components/ui/Logo";
 import Link from "next/link";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Reveal from "@/components/ui/Reveal";
@@ -12,7 +13,10 @@ export default function Coverage() {
     <section className="bg-mist section">
       <div className="container-x grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
         <Reveal>
-          <span className="mb-5 eyebrow">مناطق التغطية</span>
+          <span className="mb-5 eyebrow">
+            <LogoMark className="h-3.5 w-auto" />
+            مناطق التغطية
+          </span>
           <h2 className="heading-section">
             مقرّنا الرياض، وخدماتنا تصل إلى {ar(CITIES.length)} مدينة
           </h2>
@@ -46,7 +50,7 @@ export default function Coverage() {
         <Reveal delay={150}>
           <div className="overflow-hidden rounded-brand shadow-lift">
             <Image
-              src="/images/brand-van.jpg"
+              src="/images/brand-van.webp"
               alt="سيارة الزامل كلين بهوية العلامة"
               width={1500}
               height={1000}

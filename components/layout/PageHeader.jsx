@@ -5,7 +5,7 @@ import { LogoMark } from "@/components/ui/Logo";
 
 export default function PageHeader({ label, title, subtitle }) {
   return (
-    <section className="relative overflow-hidden border-b border-line bg-mist">
+    <section className="relative bleed-under-nav overflow-hidden border-b border-line bg-mist">
       <div
         className="pointer-events-none absolute inset-0 bg-grid mask-fade-b"
         aria-hidden="true"
@@ -25,7 +25,12 @@ export default function PageHeader({ label, title, subtitle }) {
             <span className="text-navy">{title}</span>
           </nav>
 
-          {label && <span className="mb-4 eyebrow">{label}</span>}
+          {label && (
+            <span className="mb-4 eyebrow">
+              <LogoMark className="h-3.5 w-auto" />
+              {label}
+            </span>
+          )}
           <h1 className="max-w-3xl heading-page">{title}</h1>
           {subtitle && <p className="mt-5 max-w-2xl lead">{subtitle}</p>}
         </Reveal>

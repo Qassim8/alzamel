@@ -1,42 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaWhatsapp, FaArrowLeftLong, FaCircleCheck } from "react-icons/fa6";
-import Reveal from "@/components/ui/Reveal";
+import { FaArrowLeftLong, FaCircleCheck, FaWhatsapp } from "react-icons/fa6";
+import BrandSeal from "@/components/ui/BrandSeal";
+import BubbleField from "@/components/sections/BubbleField";
 import { WA_MESSAGES, whatsappLink } from "@/lib/whatsapp";
 
 const TRUST_POINTS = ["فريق متخصص", "معدات حديثة", "مواد آمنة"];
 
-const FLOATING_BUBBLES = [
-  { x: "2%", y: "6%", size: 150, dur: 9, delay: 0, mobile: true },
-  { x: "-3%", y: "58%", size: 110, dur: 11, delay: -3 },
-  { x: "14%", y: "84%", size: 70, dur: 7, delay: -1.5, mobile: true },
-  { x: "30%", y: "10%", size: 60, dur: 8, delay: -4 },
-  { x: "44%", y: "88%", size: 95, dur: 10, delay: -2 },
-  { x: "48%", y: "30%", size: 42, dur: 6.5, delay: -5 },
-  { x: "52%", y: "62%", size: 28, dur: 5.5, delay: -1 },
-  { x: "63%", y: "8%", size: 54, dur: 7.5, delay: -2.5, mobile: true },
-  { x: "84%", y: "4%", size: 130, dur: 9.5, delay: -6, mobile: true },
-  { x: "93%", y: "44%", size: 64, dur: 8, delay: -1.5 },
-  { x: "78%", y: "80%", size: 100, dur: 11, delay: -4.5, mobile: true },
-  { x: "92%", y: "90%", size: 40, dur: 6, delay: -3 },
-  { x: "66%", y: "92%", size: 34, dur: 6.5, delay: -5.5 },
-  { x: "38%", y: "52%", size: 24, dur: 5, delay: -0.5 },
-  { x: "22%", y: "28%", size: 36, dur: 7, delay: -3.5 },
-  { x: "72%", y: "24%", size: 22, dur: 5.5, delay: -2 },
-];
-
-const bubbleVars = (b) => ({
-  "--x": b.x,
-  "--y": b.y ?? "auto",
-  "--s": `${b.size}px`,
-  "--d": `${b.dur}s`,
-  "--delay": `${b.delay}s`,
-});
-
-const bubbleClass = (b, extra = "") =>
-  `bubble ${extra} ${b.mobile ? "" : "hidden sm:block"}`.trim();
-
-// مسار متموج وعضوي (Fluid Organic Blob/Wave) مستوحى من الأنماط الحركية البارزة
+// مسار متموج عضوي يُقصّ به إطار الصورة
 const WAVE_PATH =
   "M0.14,0.02 C0.36,0 0.62,0.04 0.84,0.03 C0.95,0.02 1,0.1 0.98,0.2 " +
   "C0.96,0.3 0.86,0.36 0.88,0.48 C0.9,0.6 1,0.64 0.98,0.76 " +
@@ -44,9 +15,13 @@ const WAVE_PATH =
   "C0.08,1 0,0.92 0.02,0.8 C0.04,0.62 0,0.46 0.03,0.3 " +
   "C0.05,0.14 0.04,0.04 0.14,0.02 Z";
 
+/**
+ * الهيرو — بلا Reveal على العنوان والصورة:
+ * عنصر LCP يجب أن يُرسم فوراً دون انتظار جافاسكربت.
+ */
 export default function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-(--c-mist) py-12 lg:py-20">
+    <section className="relative isolate bleed-under-nav overflow-hidden bg-mist py-12 lg:py-20">
       {/* تعريف قناع الإطار المتموّج */}
       <svg
         width="0"
@@ -62,69 +37,52 @@ export default function Hero() {
         </defs>
       </svg>
 
-      {/* ================= 1. الفقاعات المتحركة ================= */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        {FLOATING_BUBBLES.map((b, i) => (
-          <span
-            key={`f-${i}`}
-            className={bubbleClass(b)}
-            style={bubbleVars(b)}
-          />
-        ))}
-      </div>
+      <BubbleField />
 
       <div className="relative z-10 container-x grid items-center gap-14 py-8 lg:grid-cols-2 lg:gap-12">
-        {/* النصوص والتعريف */}
+        {/* النصوص */}
         <div>
-          <Reveal delay={80}>
-            <h1 className="heading-display">
-              خلّ النظافة علينا
-              <br />
-              <span className="mt-14 text-brand-grad">والراحة لك</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={160}>
-            <p className="mt-6 max-w-xl lead">
-              من تنظيف ما بعد التشطيب إلى التنظيف العميق للمنازل والمنشآت، نمنح
-              كل مساحة عناية تستحقها، بفريق متخصص ومعدات حديثة ومواد آمنة. لأن
-              النظافة الحقيقية ليست مجرد مظهر، بل راحة تبدأ من التفاصيل.
-            </p>
-          </Reveal>
-          <Reveal delay={240}>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={whatsappLink(WA_MESSAGES.book)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-              >
-                <FaWhatsapp className="text-lg" />
-                احجز خدمة التنظيف
-              </a>
+          <h1 className="heading-display">
+            خلّ النظافة علينا
+            <br />
+            <span className="text-brand-grad">والراحة لك</span>
+          </h1>
 
-              <Link href="/services" className="btn-ghost">
-                اكتشف خدماتنا
-                <FaArrowLeftLong className="text-xs" />
-              </Link>
-            </div>
-          </Reveal>
-          <Reveal delay={300}>
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-navy/80">
-              {TRUST_POINTS.map((point) => (
-                <li key={point} className="flex items-center gap-2">
-                  <FaCircleCheck className="text-emerald-500" />
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
+          <p className="mt-6 max-w-xl lead">
+            من تنظيف ما بعد التشطيب إلى التنظيف العميق للمنازل والمنشآت، نمنح كل
+            مساحة عناية تستحقها، بفريق متخصص ومعدات حديثة ومواد آمنة. لأن
+            النظافة الحقيقية ليست مجرد مظهر، بل راحة تبدأ من التفاصيل.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={whatsappLink(WA_MESSAGES.book)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              <FaWhatsapp className="text-lg" />
+              احجز خدمة التنظيف
+            </a>
+
+            <Link href="/services" className="btn-ghost">
+              اكتشف خدماتنا
+              <FaArrowLeftLong className="text-xs" />
+            </Link>
+          </div>
+
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-navy/80">
+            {TRUST_POINTS.map((point) => (
+              <li key={point} className="flex items-center gap-2">
+                <FaCircleCheck className="text-primary-ink" />
+                {point}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* ================= 2. الصورة داخل الإطار العضوي المتموّج ================= */}
-        <Reveal delay={200} className="relative">
+        {/* الصورة داخل الإطار العضوي المتموّج */}
+        <div className="relative">
           <div className="relative isolate mx-auto w-full max-w-[560px] lg:max-w-full">
             <div
               aria-hidden="true"
@@ -140,14 +98,13 @@ export default function Hero() {
                 }}
               >
                 <Image
-                  src="/images/05-sofa-steam.png"
-                  alt="فنّي الزامل كلين بزيّ العلامة أثناء تنظيف تفاصيل داخلية"
+                  src="/images/05-sofa-steam.webp"
+                  alt="فنّي الزامل كلين بزيّ العلامة أثناء تنظيف الكنب بالبخار"
                   fill
                   priority
+                  sizes="(max-width: 1024px) 92vw, 560px"
                   className="object-cover"
                 />
-
-                {/* التدرج الداخلي الشفاف */}
                 <div
                   className="absolute inset-0 bg-linear-to-t from-navy/50 via-transparent to-transparent"
                   aria-hidden="true"
@@ -155,7 +112,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* حدّ أبيض يتبع الشكل المتموّج الجديد */}
+            {/* حدّ أبيض يتبع الشكل المتموّج */}
             <svg
               aria-hidden="true"
               viewBox="0 0 1 1"
@@ -171,8 +128,11 @@ export default function Hero() {
                 vectorEffect="non-scaling-stroke"
               />
             </svg>
+
+            {/* ختم العلامة على الحافة المواجهة للنص */}
+            <BrandSeal className="absolute -inset-s-5 top-1/2 -translate-y-1/2 sm:-inset-s-8" />
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

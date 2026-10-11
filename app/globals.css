@@ -119,17 +119,21 @@
   @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
 }
 
+/* الخلفية تمتد تحت الـ Navbar الثابت بينما يبقى المحتوى أسفله */
+@utility bleed-under-nav {
+  margin-top: calc(var(--nav-h) * -1);
+  padding-top: var(--nav-h);
+}
+
 @utility section {
   @apply py-16 sm:py-24;
 }
 
 /* ═══ نصوص ═══ */
+/* بصمة العلامة أعلى كل قسم: القطرة تحلّ محل الخط القصير.
+   الأيقونة تأتي من SectionHeading كعنصر فعلي لا كـ ::before. */
 @utility eyebrow {
   @apply inline-flex items-center gap-2 text-small font-bold tracking-wide text-primary-ink;
-  &::before {
-    content: "";
-    @apply block h-px w-6 bg-primary-ink/50;
-  }
 }
 
 /* الاسم heading-* لأن البادئة h-* محجوزة لكلاسات الارتفاع في Tailwind */
@@ -191,7 +195,7 @@
 
 @utility icon-box {
   @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-icon text-xl text-white;
-  background-image: var(--grad-brand);
+  background-image: var(--grad-action);
 }
 
 @utility icon-box-soft {
@@ -267,7 +271,12 @@
     inset -8px -10px 18px rgba(124, 58, 237, 0.16),
     0 14px 30px -12px rgba(2, 127, 211, 0.5);
   animation: bubble-float var(--d, 8s) ease-in-out var(--delay, 0s) infinite;
-  will-change: transform;
+}
+
+/* توقف الحركة عندما يخرج الهيرو من الشاشة (يضبطها BubbleField) */
+[data-paused="true"] .bubble,
+[data-paused="true"] .bubble::before {
+  animation-play-state: paused;
 }
 
 /* الحافة القزحية — تدور ببطء فتتلألأ ألوانها */
@@ -339,6 +348,17 @@
   }
 }
 
+/* ختم العلامة — النص الدائري يدور ببطء */
+.brand-seal {
+  animation: seal-spin 40s linear infinite;
+}
+
+@keyframes seal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* الشكل المتدرّج الذي "يتنفّس" خلف الصورة */
 .hero-blob-bg {
   background-image: var(--grad-brand);
@@ -378,7 +398,8 @@
   }
   .bubble,
   .bubble::before,
-  .hero-blob-bg {
+  .hero-blob-bg,
+  .brand-seal {
     animation: none !important;
   }
 }

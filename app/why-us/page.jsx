@@ -48,7 +48,7 @@ export default function WhyUsPage() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {WHY_US.map((f, i) => (
               <Reveal key={f.titleAr} delay={(i % 3) * 110}>
-                <div className="h-full card-hover p-6">
+                <div className="h-full card p-6">
                   <span className="mb-5 icon-box">
                     <Icon name={f.icon} />
                   </span>
@@ -73,7 +73,8 @@ export default function WhyUsPage() {
       <section className="bg-navy-grad section">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <span className="mb-5 eyebrow text-turquoise! before:bg-turquoise/50!">
+            <span className="mb-5 eyebrow text-turquoise!">
+              <LogoMark className="h-3.5 w-auto" />
               مبادئنا
             </span>
             <h2 className="heading-section text-white!">
@@ -105,7 +106,7 @@ export default function WhyUsPage() {
             <div className="relative">
               <div className="overflow-hidden rounded-panel shadow-lift">
                 <Image
-                  src="/images/facade-cleaning.jpg"
+                  src="/images/facade-cleaning.webp"
                   alt="فنّي الزامل كلين أثناء تنظيف واجهة خارجية"
                   width={1000}
                   height={1500}

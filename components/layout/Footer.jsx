@@ -11,48 +11,55 @@ import {
   FaClock,
 } from "react-icons/fa6";
 import Logo from "@/components/ui/Logo";
+import { ACTIVE_SOCIALS } from "@/lib/content/socials";
 import { COMPANY } from "@/lib/content/company";
 import { NAV_LINKS } from "@/lib/content/navigation";
 import { SERVICES } from "@/lib/content/services";
 import { ar } from "@/lib/format";
 import { whatsappLink } from "@/lib/whatsapp";
 
-const SOCIALS = [
-  { icon: <FaInstagram />, label: "انستقرام", href: "#" },
-  { icon: <FaXTwitter />, label: "إكس", href: "#" },
-  { icon: <FaTiktok />, label: "تيك توك", href: "#" },
-  { icon: <FaSnapchat />, label: "سناب شات", href: "#" },
-];
+/* لا تُعرض أيقونة بلا رابط حقيقي — المصدر lib/content/socials.js */
+const SOCIAL_ICONS = {
+  instagram: <FaInstagram />,
+  x: <FaXTwitter />,
+  tiktok: <FaTiktok />,
+  snapchat: <FaSnapchat />,
+};
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-grad text-white">
+    // pb-16 على الجوال حتى لا يغطي شريط الإجراءات آخر سطر
+    <footer className="bg-navy-grad pb-16 text-white sm:pb-0">
       <div className="container-x grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         {/* العلامة */}
         <div>
           <Logo tone="white" markClass="h-10 w-auto" />
-          <p className="mt-5 max-w-xs text-small leading-loose text-white/60">
+          <p className="mt-5 max-w-xs text-small leading-loose text-white/70">
             {COMPANY.promise} نقدّم حلول تنظيف متكاملة للمنازل والفلل والمنشآت
             في {COMPANY.city} وعدد من مدن المملكة.
           </p>
-          <div className="mt-6 flex gap-2.5">
-            {SOCIALS.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-lead text-white/70 transition-all duration-300 ease-brand hover:border-turquoise/50 hover:bg-white/5 hover:text-turquoise"
-              >
-                {s.icon}
-              </a>
-            ))}
-          </div>
+          {ACTIVE_SOCIALS.length > 0 && (
+            <div className="mt-6 flex gap-2.5">
+              {ACTIVE_SOCIALS.map((s) => (
+                <a
+                  key={s.id}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-lead text-white/75 transition-all duration-300 ease-brand hover:border-turquoise/50 hover:bg-white/5 hover:text-turquoise"
+                >
+                  {SOCIAL_ICONS[s.id]}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* روابط */}
         <nav aria-label="روابط الموقع">
           <p className="mb-4 text-lead font-bold">روابط سريعة</p>
-          <ul className="space-y-2.5 text-small text-white/65">
+          <ul className="space-y-2.5 text-small text-white/75">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
                 <Link
@@ -69,7 +76,7 @@ export default function Footer() {
         {/* خدمات */}
         <nav aria-label="أبرز الخدمات">
           <p className="mb-4 text-lead font-bold">أبرز الخدمات</p>
-          <ul className="space-y-2.5 text-small text-white/65">
+          <ul className="space-y-2.5 text-small text-white/75">
             {SERVICES.slice(0, 7).map((s) => (
               <li key={s.id}>
                 <Link
@@ -86,7 +93,7 @@ export default function Footer() {
         {/* تواصل */}
         <div>
           <p className="mb-4 text-lead font-bold">تواصل معنا</p>
-          <ul className="space-y-3.5 text-small text-white/65">
+          <ul className="space-y-3.5 text-small text-white/75">
             <li className="flex items-start gap-2.5">
               <FaLocationDot className="mt-1 shrink-0 text-turquoise" />
               {COMPANY.city}
@@ -126,8 +133,18 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* ختام الصفحة: اسم العلامة عريضاً بسطر واحد ومقصوصاً من الأسفل */}
+      <div aria-hidden="true" className="container-x overflow-hidden">
+        <p
+          dir="ltr"
+          className="-mb-[0.3em] text-center font-latin text-[clamp(2rem,10.6vw,8.1rem)] leading-[0.78] font-extrabold tracking-tight whitespace-nowrap text-white/[.06] select-none"
+        >
+          AL ZAMIL CLEAN
+        </p>
+      </div>
+
       <div className="border-t border-white/10">
-        <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-caption text-white/45 sm:flex-row">
+        <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-caption text-white/65 sm:flex-row">
           <p>
             © {ar(new Date().getFullYear())} {COMPANY.nameAr} — جميع الحقوق
             محفوظة.

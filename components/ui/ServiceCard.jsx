@@ -31,13 +31,13 @@ export default function ServiceCard({ service, compact = false }) {
             />
           </>
         ) : (
-          <div className="relative h-full w-full bg-brand-grad">
+          <div className="relative h-full w-full bg-navy-grad">
             <LogoMark className="absolute -inset-s-5 -bottom-6 h-36 w-auto opacity-[.14] transition-transform duration-700 ease-brand group-hover:scale-110" />
             <div
               className="absolute inset-0 opacity-[.5]"
               style={{
                 backgroundImage:
-                  "radial-gradient(circle at 78% 22%, rgba(255,255,255,.28), transparent 55%)",
+                  "radial-gradient(circle at 78% 22%, rgba(2,184,210,.35), transparent 60%)",
               }}
               aria-hidden="true"
             />
@@ -82,7 +82,7 @@ export default function ServiceCard({ service, compact = false }) {
           href={whatsappLink(message)}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-mist px-4 py-3 text-small font-bold text-navy transition-all duration-300 ease-brand group-hover:bg-brand-grad group-hover:text-white"
+          className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-mist px-4 py-3 text-small font-bold text-navy transition-all duration-300 ease-brand group-hover:bg-action-grad group-hover:text-white"
         >
           <FaWhatsapp className="text-base" /> اطلب هذه الخدمة
         </a>

@@ -132,7 +132,7 @@ export function UnitPricingGrid() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`اطلب سعر ${u.label}`}
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-mist text-lead text-primary-ink transition-all duration-300 ease-brand hover:bg-brand-grad hover:text-white"
+                      className="flex h-9 w-9 items-center justify-center rounded-full bg-mist text-lead text-primary-ink transition-all duration-300 ease-brand hover:bg-action-grad hover:text-white"
                     >
                       <FaWhatsapp />
                     </a>

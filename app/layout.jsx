@@ -2,15 +2,19 @@ import { Readex_Pro, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import MobileActionBar from "@/components/layout/MobileActionBar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
-import { COMPANY } from "@/lib/content/company";
+import { CITIES } from "@/lib/content/cities";
+import { COMPANY, OPENING_HOURS } from "@/lib/content/company";
+import { ACTIVE_SOCIALS } from "@/lib/content/socials";
 import { SITE_URL } from "@/lib/site";
 
 /* الهوية تعتمد Arial (جروتسك محايد). على الويب نستخدم
    Readex Pro للعربي — خط متغيّر فتعمل كل الأوزان 400→700 فعلياً —
    وInter للاتيني. */
 const readex = Readex_Pro({
-  subsets: ["arabic", "latin"],
+  subsets: ["arabic"], // اللاتيني يأتي من Inter — لا داعي لتحميله مرتين
+
   variable: "--font-readex",
   display: "swap",
 });
@@ -57,6 +61,8 @@ export const metadata = {
 
 export const viewport = {
   themeColor: "#082F49",
+  // لازم حتى تعمل env(safe-area-inset-bottom) في شريط إجراءات الجوال
+  viewportFit: "cover",
 };
 
 const JSON_LD = {
@@ -69,13 +75,26 @@ const JSON_LD = {
   url: SITE_URL,
   telephone: `+${COMPANY.phoneIntl}`,
   email: COMPANY.email,
-  image: `${SITE_URL}/images/home-detail.jpg`,
+  logo: `${SITE_URL}/icon.svg`,
+  image: `${SITE_URL}/opengraph-image.jpg`,
   address: {
     "@type": "PostalAddress",
     addressLocality: "الرياض",
     addressCountry: "SA",
   },
-  areaServed: "SA",
+  // الجمعة بموعد مسبق فلا تُدرج ضمن الأوقات الثابتة
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: OPENING_HOURS.days,
+      opens: OPENING_HOURS.opens,
+      closes: OPENING_HOURS.closes,
+    },
+  ],
+  areaServed: CITIES.map((c) => ({ "@type": "City", name: c.name })),
+  ...(ACTIVE_SOCIALS.length > 0 && {
+    sameAs: ACTIVE_SOCIALS.map((s) => s.href),
+  }),
   priceRange: "$$",
 };
 
@@ -104,9 +123,12 @@ export default function RootLayout({ children }) {
           تخطّي إلى المحتوى
         </a>
         <Navbar />
-        <main id="main">{children}</main>
+        <main id="main" className="pt-(--nav-h)">
+          {children}
+        </main>
         <Footer />
         <WhatsAppFloat />
+        <MobileActionBar />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}

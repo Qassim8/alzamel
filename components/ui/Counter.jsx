@@ -2,10 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import { ar } from "@/lib/format";
 
-/** عدّاد تصاعدي يبدأ عند دخول العنصر للشاشة. */
+/**
+ * عدّاد تصاعدي.
+ * يُرسم بالقيمة النهائية في HTML — فيراها الزائر ومحرك البحث فوراً.
+ * إن كان العنصر خارج الشاشة عند التحميل يرجع إلى صفر ثم يعدّ عند ظهوره.
+ */
 export default function Counter({ to = 0, duration = 1500, className = "" }) {
   const ref = useRef(null);
-  const [n, setN] = useState(0);
+  const [n, setN] = useState(to);
 
   useEffect(() => {
     const el = ref.current;
@@ -14,12 +18,13 @@ export default function Counter({ to = 0, duration = 1500, className = "" }) {
     const reduce = window.matchMedia?.(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+    if (reduce || typeof IntersectionObserver === "undefined") return;
 
-    let raf;
-    if (reduce || typeof IntersectionObserver === "undefined") {
-      raf = requestAnimationFrame(() => setN(to));
-      return () => cancelAnimationFrame(raf);
-    }
+    // العنصر ظاهر أصلاً عند التحميل → اتركه على القيمة النهائية
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) return;
+
+    let raf = requestAnimationFrame(() => setN(0));
 
     const io = new IntersectionObserver(
       ([e]) => {
@@ -28,8 +33,7 @@ export default function Counter({ to = 0, duration = 1500, className = "" }) {
         const t0 = performance.now();
         const tick = (t) => {
           const p = Math.min((t - t0) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          setN(Math.round(to * eased));
+          setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
           if (p < 1) raf = requestAnimationFrame(tick);
         };
         raf = requestAnimationFrame(tick);
@@ -37,6 +41,7 @@ export default function Counter({ to = 0, duration = 1500, className = "" }) {
       { threshold: 0.4 },
     );
     io.observe(el);
+
     return () => {
       io.disconnect();
       cancelAnimationFrame(raf);

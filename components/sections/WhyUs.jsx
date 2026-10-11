@@ -1,4 +1,5 @@
 import Icon from "@/components/ui/Icon";
+import { LogoMark } from "@/components/ui/Logo";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { WHY_US } from "@/lib/content/why-us";
@@ -6,8 +7,10 @@ import { WHY_US } from "@/lib/content/why-us";
 /** قسم المميزات على خلفية كحلية — ما الذي يميّزنا؟ */
 export default function WhyUs() {
   return (
-    <section className="bg-navy-grad section">
-      <div className="container-x">
+    <section className="relative overflow-hidden bg-navy-grad section">
+      {/* علامة مائية خارج منطقة النص — شفافية ٥٪ فقط */}
+      <LogoMark className="pointer-events-none absolute -inset-s-16 -bottom-24 hidden h-[420px] w-auto opacity-[.05] lg:block" />
+      <div className="relative container-x">
         <SectionHeading
           tone="dark"
           label="لماذا الزامل كلين"

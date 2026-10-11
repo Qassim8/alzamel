@@ -5,7 +5,8 @@ import { GALLERY } from "@/lib/content/gallery";
 
 /**
  * معرض «من الميدان» — إثبات بصري.
- * tone: "light" على الأبيض | "mist" على الخلفية الهادئة.
+ * الحاسوب: شبكة bento بصورة كبيرة (عمودان × صفّان) وخمس عادية.
+ * التابلت: عمودان. الجوال: تمرير أفقي بـ snap.
  */
 export default function Gallery({
   tone = "mist",
@@ -16,21 +17,36 @@ export default function Gallery({
     <section className={`section ${tone === "mist" ? "bg-mist" : ""}`}>
       <div className="container-x">
         <SectionHeading label="من الميدان" title={title} subtitle={subtitle} />
-        <div className="grid gap-5 sm:grid-cols-3">
+      </div>
+
+      {/* الجوال: شريط أفقي يلتقط الصور؛ من sm فأعلى: شبكة */}
+      <div className="container-x">
+        <div
+          /* ٣×٣ على الحاسوب: الكبيرة ٢×٢ + خمس عادية = ٩ خلايا تمتلئ تماماً */
+          className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 lg:grid-rows-3"
+          style={{ scrollbarWidth: "none" }}
+        >
           {GALLERY.map((g, i) => (
-            <Reveal key={g.src} delay={i * 120}>
-              <div className="group relative overflow-hidden rounded-brand shadow-card">
+            <Reveal
+              key={g.src}
+              delay={(i % 3) * 110}
+              className={`w-[78vw] shrink-0 snap-start sm:w-auto ${
+                g.feature ? "lg:col-span-2 lg:row-span-2" : ""
+              }`}
+            >
+              <div className="group h-full overflow-hidden rounded-brand shadow-card">
                 <Image
                   src={g.src}
                   alt={g.alt}
-                  width={1000}
-                  height={1500}
-                  sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 360px"
-                  className="h-[300px] w-full object-cover transition-transform duration-700 ease-brand group-hover:scale-[1.06] sm:h-[340px]"
-                />
-                <div
-                  className="absolute inset-0 bg-linear-to-t from-navy/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  aria-hidden="true"
+                  width={1600}
+                  height={1067}
+                  sizes="(max-width: 640px) 78vw, (max-width: 1024px) 45vw, 380px"
+                  style={{ objectPosition: g.pos ?? "center" }}
+                  className={`w-full object-cover transition-transform duration-700 ease-brand group-hover:scale-[1.06] ${
+                    g.feature
+                      ? "h-[260px] sm:h-[300px] lg:h-full lg:min-h-[500px]"
+                      : "h-[260px] sm:h-[230px] lg:h-[240px]"
+                  }`}
                 />
               </div>
             </Reveal>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { LogoMark } from "@/components/ui/Logo";
 import {
   FaWhatsapp,
   FaLocationDot,
@@ -51,7 +52,10 @@ export default function AreasPage() {
       <section className="section">
         <div className="container-x grid items-start gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
           <Reveal>
-            <span className="mb-5 eyebrow">اختر مدينتك</span>
+            <span className="mb-5 eyebrow">
+              <LogoMark className="h-3.5 w-auto" />
+              اختر مدينتك
+            </span>
             <h2 className="heading-section">
               اضغط على مدينتك وأرسل طلبك مباشرة
             </h2>
@@ -69,7 +73,7 @@ export default function AreasPage() {
                     rel="noopener noreferrer"
                     className={`group flex items-center justify-between gap-3 rounded-2xl border p-4 transition-all duration-300 ease-brand hover:-translate-y-0.5 hover:shadow-card ${
                       c.main
-                        ? "border-transparent bg-brand-grad text-white"
+                        ? "border-transparent bg-action-grad text-white"
                         : "border-line bg-white hover:border-azure/40"
                     }`}
                   >
@@ -102,7 +106,7 @@ export default function AreasPage() {
           <Reveal delay={150} className="lg:sticky lg:top-28">
             <div className="overflow-hidden rounded-brand shadow-lift">
               <Image
-                src="/images/brand-van.jpg"
+                src="/images/brand-van.webp"
                 alt="سيارة الزامل كلين بهوية العلامة"
                 width={1500}
                 height={1000}

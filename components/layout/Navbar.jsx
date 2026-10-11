@@ -43,15 +43,17 @@ export default function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
+    /* fixed دائماً: لا يدخل تدفّق الصفحة فجأة عند التمرير فلا تحدث قفزة.
+       إزاحة المحتوى تأتي من padding على <main>. */
     <header
-      className={`top-0 z-50 transition-all duration-300 ease-brand ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300 ease-brand ${
         solid
-          ? "sticky border-b border-line bg-white/85 shadow-[0_1px_20px_-12px_rgba(8,47,73,.35)] backdrop-blur-xl"
-          : "absolute w-full"
+          ? "border-b border-line bg-white/85 shadow-[0_1px_20px_-12px_rgba(8,47,73,.35)] backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <nav
-        className="container-x flex h-[76px] items-center justify-between gap-6"
+        className="container-x flex h-(--nav-h) items-center justify-between gap-6"
         aria-label="التنقل الرئيسي"
       >
         <Link href="/" aria-label="الزامل كلين — الصفحة الرئيسية">

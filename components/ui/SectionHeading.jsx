@@ -1,3 +1,4 @@
+import { LogoMark } from "@/components/ui/Logo";
 import Reveal from "@/components/ui/Reveal";
 
 export default function SectionHeading({
@@ -17,7 +18,13 @@ export default function SectionHeading({
         isCenter ? "items-center text-center" : "items-start text-right"
       }`}
     >
-      {label && <span className="eyebrow">{label}</span>}
+      {label && (
+        <span className="eyebrow">
+          {/* بصمة العلامة الهادئة أعلى كل قسم */}
+          <LogoMark className="h-3.5 w-auto" />
+          {label}
+        </span>
+      )}
       <h2
         className={`heading-section ${titleTone} ${isCenter ? "max-w-3xl" : ""}`}
       >
