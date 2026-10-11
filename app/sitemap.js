@@ -1,4 +1,4 @@
-const SITE_URL = "https://www.alzamil-clean.sa";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap() {
   const routes = ["", "/services", "/pricing", "/areas", "/why-us", "/contact"];

@@ -15,11 +15,26 @@
   --color-mist: #f2f8fa; /* خلفية هادئة */
 
   /* أسماء دلالية */
-  --color-primary: #0299df;
+  --color-primary: #0299df; /* زخرفي فقط — تباينه 3.17 على الأبيض */
   --color-primary-dark: #027fd3;
-  --color-body: #13293a;
-  --color-muted: #5f7689;
+  /* لون النص والروابط: 5.41 على الأبيض و5.04 على mist — يحقق WCAG AA */
+  --color-primary-ink: #026eb3;
+  --color-ink: #13293a;
+  --color-muted: #566d80; /* 5.39 على الأبيض و5.03 على mist */
   --color-line: #e3edf2;
+
+  /* سلّم مقاسات النص — بديل القيم العشوائية */
+  --text-micro: 10px; /* أيقونات وشارات صغيرة */
+  --text-caption: 12px; /* نصوص مساعدة */
+  --text-small: 13.5px; /* وصف البطاقات */
+  --text-body: 14.5px; /* النص العام */
+  --text-lead: 15px; /* فقرات تمهيدية */
+  --text-card: 17px; /* عناوين البطاقات */
+  --text-title: 19px; /* عناوين فرعية بارزة */
+
+  /* أنصاف الأقطار */
+  --radius-panel: 26px;
+  --radius-icon: 14px;
 
   /* متغيّرات next/font تحمل أسماءها الخاصة (readex/inter)
      حتى لا يشير متغيّر الثيم إلى نفسه فيسقط الخط. */
@@ -64,6 +79,8 @@
     var(--color-blue)
   );
   --grad-navy: linear-gradient(160deg, #0c3c5c, var(--color-navy));
+  /* تدرّج الأزرار: نسبة النص الأبيض عليه 5.1 فأكثر في كل نقطة */
+  --grad-action: linear-gradient(135deg, #0272b8, #025fa0);
 
   --nav-h: 76px;
 }
@@ -88,7 +105,7 @@
   }
 
   body {
-    @apply bg-white font-sans text-body antialiased;
+    @apply bg-white font-sans text-ink antialiased;
   }
 
   ::selection {
@@ -108,10 +125,10 @@
 
 /* ═══ نصوص ═══ */
 @utility eyebrow {
-  @apply inline-flex items-center gap-2 text-[13px] font-bold tracking-wide text-primary;
+  @apply inline-flex items-center gap-2 text-small font-bold tracking-wide text-primary-ink;
   &::before {
     content: "";
-    @apply block h-px w-6 bg-primary/50;
+    @apply block h-px w-6 bg-primary-ink/50;
   }
 }
 
@@ -124,8 +141,12 @@
   @apply text-[1.6rem] leading-snug font-bold text-navy sm:text-[2.1rem];
 }
 
+@utility heading-page {
+  @apply text-[1.75rem] font-bold text-navy sm:text-[2.4rem];
+}
+
 @utility lead {
-  @apply text-[15px] leading-loose text-muted sm:text-base;
+  @apply text-lead leading-loose text-muted sm:text-base;
 }
 
 /* ═══ أزرار ═══ */
@@ -135,7 +156,7 @@
 
 @utility btn-primary {
   @apply btn text-white shadow-card hover:-translate-y-0.5 hover:shadow-lift;
-  background-image: var(--grad-brand);
+  background-image: var(--grad-action);
   background-size: 160% 100%;
   background-position: 0% 0;
   &:hover {
@@ -169,12 +190,12 @@
 }
 
 @utility icon-box {
-  @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] text-xl text-white;
+  @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-icon text-xl text-white;
   background-image: var(--grad-brand);
 }
 
 @utility icon-box-soft {
-  @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] bg-mist text-xl text-primary;
+  @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-icon bg-mist text-xl text-primary-ink;
 }
 
 /* ═══ خلفيات ═══ */
@@ -184,6 +205,10 @@
 
 @utility bg-navy-grad {
   background-image: var(--grad-navy);
+}
+
+@utility bg-action-grad {
+  background-image: var(--grad-action);
 }
 
 @utility text-brand-grad {
