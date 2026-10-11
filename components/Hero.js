@@ -46,7 +46,7 @@ const WAVE_PATH =
 
 export default function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-[var(--c-mist)] py-12 lg:py-20">
+    <section className="relative isolate overflow-hidden bg-(--c-mist) py-12 lg:py-20">
       {/* تعريف قناع الإطار المتموّج */}
       <svg
         width="0"
@@ -76,18 +76,18 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="container-x relative z-10 grid items-center gap-14 py-8 lg:grid-cols-2 lg:gap-12">
+      <div className="relative z-10 container-x grid items-center gap-14 py-8 lg:grid-cols-2 lg:gap-12">
         {/* النصوص والتعريف */}
         <div>
           <Reveal delay={80}>
-            <h1 className="h-display">
+            <h1 className="heading-display">
               خلّ النظافة علينا
               <br />
-              <span className="text-brand-grad mt-14">والراحة لك</span>
+              <span className="mt-14 text-brand-grad">والراحة لك</span>
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="lead mt-6 max-w-xl">
+            <p className="mt-6 max-w-xl lead">
               من تنظيف ما بعد التشطيب إلى التنظيف العميق للمنازل والمنشآت، نمنح
               كل مساحة عناية تستحقها، بفريق متخصص ومعدات حديثة ومواد آمنة. لأن
               النظافة الحقيقية ليست مجرد مظهر، بل راحة تبدأ من التفاصيل.
@@ -126,11 +126,11 @@ export default function Hero() {
         </div>
 
         {/* ================= 2. الصورة داخل الإطار العضوي المتموّج ================= */}
-        <Reveal delay={200} className="relative ">
+        <Reveal delay={200} className="relative">
           <div className="relative isolate mx-auto w-full max-w-[560px] lg:max-w-full">
             <div
               aria-hidden="true"
-              className="hero-blob-bg absolute -bottom-6 -left-6 right-12 top-12 -z-10 sm:-bottom-8 sm:-left-8"
+              className="hero-blob-bg absolute top-12 right-12 -bottom-6 -left-6 -z-10 sm:-bottom-8 sm:-left-8"
             />
 
             <div className="drop-shadow-[0_28px_40px_rgba(8,47,73,0.28)]">
@@ -151,7 +151,7 @@ export default function Hero() {
 
                 {/* التدرج الداخلي الشفاف */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent"
+                  className="absolute inset-0 bg-linear-to-t from-navy/50 via-transparent to-transparent"
                   aria-hidden="true"
                 />
               </div>

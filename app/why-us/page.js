@@ -44,8 +44,8 @@ export default function WhyUsPage() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {WHY_US.map((f, i) => (
               <Reveal key={f.titleAr} delay={(i % 3) * 110}>
-                <div className="card-hover h-full p-6">
-                  <span className="icon-box mb-5">
+                <div className="h-full card-hover p-6">
+                  <span className="mb-5 icon-box">
                     <Icon name={f.icon} />
                   </span>
                   <h3 className="mb-2 text-[16px] font-bold text-navy">
@@ -66,16 +66,16 @@ export default function WhyUsPage() {
       </section>
 
       {/* مبادئ الهوية */}
-      <section className="section bg-navy-grad">
+      <section className="bg-navy-grad section">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <span className="eyebrow mb-5 !text-turquoise before:!bg-turquoise/50">
+            <span className="mb-5 eyebrow text-turquoise! before:bg-turquoise/50!">
               مبادئنا
             </span>
-            <h2 className="h-section !text-white">
+            <h2 className="heading-section text-white!">
               فريق واحد. مظهر واحد. معيار واحد.
             </h2>
-            <p className="mt-5 text-[15px] leading-[2] text-white/65">
+            <p className="mt-5 text-[15px] leading-loose text-white/65">
               {COMPANY.promise} نحافظ على هذه الروح في كل زيارة — من الزيّ الذي
               يصلك به الفريق إلى آخر سطح نلمسه قبل الخروج.
             </p>
@@ -109,9 +109,9 @@ export default function WhyUsPage() {
                   className="h-[400px] w-full object-cover sm:h-[500px]"
                 />
               </div>
-              <div className="absolute -bottom-5 -start-2 max-w-[240px] rounded-2xl bg-white p-5 shadow-lift sm:-start-6">
+              <div className="absolute -inset-s-2 -bottom-5 max-w-[240px] rounded-2xl bg-white p-5 shadow-lift sm:-inset-s-6">
                 <FaQuoteRight className="mb-2 text-lg text-turquoise" />
-                <p className="text-[13.5px] font-bold leading-[1.8] text-navy">
+                <p className="text-[13.5px] leading-[1.8] font-bold text-navy">
                   {COMPANY.tagline}
                 </p>
               </div>
@@ -131,7 +131,7 @@ export default function WhyUsPage() {
         </div>
       </section>
 
-      <section className="section bg-mist">
+      <section className="bg-mist section">
         <div className="container-x">
           <SectionHeading
             label="من الميدان"

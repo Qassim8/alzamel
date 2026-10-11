@@ -27,7 +27,7 @@ export default function Footer() {
         {/* العلامة */}
         <div>
           <Logo tone="white" markClass="h-10 w-auto" />
-          <p className="mt-5 max-w-xs text-[13.5px] leading-[2] text-white/60">
+          <p className="mt-5 max-w-xs text-[13.5px] leading-loose text-white/60">
             {COMPANY.promise} نقدّم حلول تنظيف متكاملة للمنازل والفلل والمنشآت
             في {COMPANY.city} وعدد من مدن المملكة.
           </p>
@@ -115,7 +115,7 @@ export default function Footer() {
             href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary mt-6 w-full !py-2.5 sm:w-auto"
+            className="mt-6 btn-primary w-full py-2.5! sm:w-auto"
           >
             <FaWhatsapp /> راسلنا على واتساب
           </a>
@@ -125,7 +125,8 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-[12.5px] text-white/45 sm:flex-row">
           <p>
-            © {ar(new Date().getFullYear())} {COMPANY.nameAr} — جميع الحقوق محفوظة.
+            © {ar(new Date().getFullYear())} {COMPANY.nameAr} — جميع الحقوق
+            محفوظة.
           </p>
           <p>سجل تجاري رقم: {COMPANY.commercialRegister}</p>
         </div>

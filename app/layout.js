@@ -1,30 +1,22 @@
-import {
-  Noto_Sans_Arabic,
-  Inter,
-  Rubik,
-  Amiri,
-  IBM_Plex_Sans_Arabic,
-  Readex_Pro,
-} from "next/font/google";
+import { Readex_Pro, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { COMPANY } from "@/lib/data";
 
-/* الهوية تعتمد Arial (جروتسك محايد) — والمقابل الأمثل على الويب:
-   Noto Sans Arabic للعربي + Inter للاتيني. */
-const arabic = Readex_Pro({
-  subsets: ["arabic"],
-  variable: "--font-ar",
-  weight: ["400", "700"],
+/* الهوية تعتمد Arial (جروتسك محايد). على الويب نستخدم
+   Readex Pro للعربي — خط متغيّر فتعمل كل الأوزان 400→700 فعلياً —
+   وInter للاتيني. */
+const readex = Readex_Pro({
+  subsets: ["arabic", "latin"],
+  variable: "--font-readex",
   display: "swap",
 });
 
-const latin = Inter({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-latin",
-  weight: ["400", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -94,7 +86,9 @@ export default function RootLayout({ children }) {
     <html
       lang="ar"
       dir="rtl"
-      className={`${arabic.variable} ${latin.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+      className={`${readex.variable} ${inter.variable}`}
     >
       <head>
         {/* يفعّل حركات الظهور فقط عند توفّر جافاسكربت */}
@@ -107,7 +101,7 @@ export default function RootLayout({ children }) {
       <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:start-3 focus:z-[100] focus:rounded-full focus:bg-navy focus:px-5 focus:py-2.5 focus:text-sm focus:font-bold focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:inset-s-3 focus:top-3 focus:z-100 focus:rounded-full focus:bg-navy focus:px-5 focus:py-2.5 focus:text-sm focus:font-bold focus:text-white"
         >
           تخطّي إلى المحتوى
         </a>

@@ -41,7 +41,7 @@ export default function StatsStrip({ tone = "light" }) {
 
             <div>
               <p
-                className={`text-[1.9rem] font-black leading-none tracking-tight sm:text-[2.4rem] ${
+                className={`text-[1.9rem] leading-none font-black tracking-tight sm:text-[2.4rem] ${
                   dark ? "text-turquoise" : "text-brand-grad"
                 }`}
               >
@@ -53,7 +53,7 @@ export default function StatsStrip({ tone = "light" }) {
                 )}
               </p>
               <p
-                className={`mt-2 text-[13px] font-semibold leading-snug sm:text-sm ${
+                className={`mt-2 text-[13px] leading-snug font-semibold sm:text-sm ${
                   dark ? "text-white/65" : "text-muted"
                 }`}
               >

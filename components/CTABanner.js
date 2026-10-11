@@ -11,17 +11,19 @@ export default function CTABanner({
     <section className="section">
       <div className="container-x">
         <Reveal className="relative overflow-hidden rounded-[26px] bg-navy-grad px-7 py-14 text-center sm:px-12">
-          <LogoMark
-            className="pointer-events-none absolute -bottom-16 -start-12 h-64 w-auto opacity-[.07]"
-          />
+          <LogoMark className="pointer-events-none absolute -inset-s-12 -bottom-16 h-64 w-auto opacity-[.07]" />
           <div
-            className="pointer-events-none absolute -top-24 end-[-5%] h-72 w-72 rounded-full opacity-25 blur-3xl"
-            style={{ background: "radial-gradient(circle,#02B8D2,transparent 70%)" }}
+            className="pointer-events-none absolute inset-e-[-5%] -top-24 h-72 w-72 rounded-full opacity-25 blur-3xl"
+            style={{
+              background: "radial-gradient(circle,#02B8D2,transparent 70%)",
+            }}
             aria-hidden="true"
           />
           <div className="relative mx-auto flex max-w-2xl flex-col items-center gap-5">
-            <h2 className="h-section !text-white">{title}</h2>
-            <p className="text-[15px] leading-[2] text-white/70">{subtitle}</p>
+            <h2 className="heading-section text-white!">{title}</h2>
+            <p className="text-[15px] leading-loose text-white/70">
+              {subtitle}
+            </p>
             <div className="mt-2 flex flex-wrap justify-center gap-3">
               <a
                 href={whatsappLink(

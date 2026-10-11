@@ -55,7 +55,7 @@ export default function ContactForm() {
   }
 
   const field =
-    "w-full rounded-xl border border-line bg-white px-4 py-3 text-[14px] text-navy placeholder:text-muted/70 transition-colors duration-200 focus:border-azure focus:outline-none focus:ring-4 focus:ring-azure/10";
+    "w-full rounded-xl border border-line bg-white px-4 py-3 text-[14px] text-navy placeholder:text-muted/70 transition-colors duration-200 focus:border-azure focus:outline-hidden focus:ring-4 focus:ring-azure/10";
 
   const INFO = [
     {
@@ -89,7 +89,7 @@ export default function ContactForm() {
       {/* النموذج */}
       <form
         onSubmit={handleSubmit}
-        className="card flex flex-col gap-4 p-6 sm:p-8"
+        className="flex flex-col gap-4 card p-6 sm:p-8"
       >
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block">
@@ -175,7 +175,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="btn-primary mt-1 w-full disabled:cursor-not-allowed disabled:opacity-60"
+          className="mt-1 btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
         >
           <FaPaperPlane className="text-sm" />
           {status === "sending" ? "جارٍ الإرسال…" : "إرسال الطلب"}
@@ -201,7 +201,7 @@ export default function ContactForm() {
 
       {/* بطاقة المعلومات */}
       <aside className="relative overflow-hidden rounded-brand bg-navy-grad p-6 text-white sm:p-8">
-        <LogoMark className="pointer-events-none absolute -bottom-12 -start-8 h-52 w-auto opacity-[.07]" />
+        <LogoMark className="pointer-events-none absolute -inset-s-8 -bottom-12 h-52 w-auto opacity-[.07]" />
 
         <div className="relative">
           <h3 className="text-[18px] font-bold">معلومات التواصل</h3>
@@ -240,7 +240,7 @@ export default function ContactForm() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-white mt-8 w-full"
+            className="mt-8 btn-white w-full"
           >
             <FaWhatsapp className="text-lg text-[#25D366]" /> تواصل عبر واتساب
           </a>

@@ -2,14 +2,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaWhatsapp, FaBars, FaXmark, FaPhone } from "react-icons/fa6";
+import { FaWhatsapp, FaBars, FaXmark } from "react-icons/fa6";
 import Logo from "./Logo";
-import {
-  COMPANY,
-  NAV_LINKS,
-  whatsappLink,
-  DEFAULT_WA_MESSAGE,
-} from "@/lib/data";
+import { NAV_LINKS, whatsappLink, DEFAULT_WA_MESSAGE } from "@/lib/data";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -18,13 +13,22 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 12);
-    onScroll();
+    // الفحص الأولي في إطار الرسم التالي — لا setState داخل جسم الـ effect
+    const raf = requestAnimationFrame(onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
-  // أغلق قائمة الجوال عند تغيير الصفحة
-  useEffect(() => setOpen(false), [pathname]);
+  // أغلق قائمة الجوال عند تغيير الصفحة — تعديل الحالة أثناء العرض
+  // هو النمط الموصى به في React بدل effect لمجرد مزامنة حالة مشتقّة.
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(false);
+  }
 
   // امنع تمرير الخلفية أثناء فتح القائمة
   useEffect(() => {
@@ -39,7 +43,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={` top-0 z-50 transition-all duration-300 ease-brand ${
+      className={`top-0 z-50 transition-all duration-300 ease-brand ${
         solid
           ? "sticky border-b border-line bg-white/85 shadow-[0_1px_20px_-12px_rgba(8,47,73,.35)] backdrop-blur-xl"
           : "absolute w-full"
@@ -81,7 +85,7 @@ export default function Navbar() {
             href={whatsappLink(DEFAULT_WA_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary hidden !px-5 !py-2.5 sm:inline-flex"
+            className="btn-primary hidden px-5! py-2.5! sm:inline-flex"
           >
             <FaWhatsapp className="text-base" /> اطلب الآن
           </a>

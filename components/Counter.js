@@ -11,10 +11,16 @@ export default function Counter({ to = 0, duration = 1500, className = "" }) {
     const el = ref.current;
     if (!el) return;
 
-    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || typeof IntersectionObserver === "undefined") return setN(to);
+    const reduce = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     let raf;
+    if (reduce || typeof IntersectionObserver === "undefined") {
+      raf = requestAnimationFrame(() => setN(to));
+      return () => cancelAnimationFrame(raf);
+    }
+
     const io = new IntersectionObserver(
       ([e]) => {
         if (!e.isIntersecting) return;

@@ -33,7 +33,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="section bg-mist">
+      <section className="bg-mist section">
         <div className="container-x">
           <SectionHeading
             label="تفصيل حسب الحجم"
@@ -74,7 +74,10 @@ export default function PricingPage() {
 
       <section className="section">
         <div className="container-x">
-          <SectionHeading label="أسئلة شائعة" title="أسئلة حول الأسعار والباقات" />
+          <SectionHeading
+            label="أسئلة شائعة"
+            title="أسئلة حول الأسعار والباقات"
+          />
           <FAQ items={FAQS.filter((f) => /سعر|عقود|تستغرق/.test(f.q))} />
         </div>
       </section>

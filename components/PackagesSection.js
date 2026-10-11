@@ -11,13 +11,11 @@ export function PackagesGrid() {
         <Reveal key={p.id} delay={i * 110} className="h-full">
           <article
             className={`relative flex h-full flex-col rounded-brand p-7 transition-all duration-300 ease-brand ${
-              p.popular
-                ? "bg-navy-grad text-white shadow-lift"
-                : "card-hover"
+              p.popular ? "bg-navy-grad text-white shadow-lift" : "card-hover"
             }`}
           >
             {p.popular && (
-              <span className="absolute -top-3 start-7 inline-flex items-center gap-1.5 rounded-full bg-turquoise px-3 py-1 text-[11.5px] font-bold text-navy">
+              <span className="absolute inset-s-7 -top-3 inline-flex items-center gap-1.5 rounded-full bg-turquoise px-3 py-1 text-[11.5px] font-bold text-navy">
                 <FaStar className="text-[10px]" /> الأكثر طلباً
               </span>
             )}
@@ -71,7 +69,9 @@ export function PackagesGrid() {
                   <FaCheck
                     className={`mt-1 shrink-0 text-[10px] ${p.popular ? "text-turquoise" : "text-turquoise"}`}
                   />
-                  <span className={p.popular ? "text-white/80" : "text-navy/75"}>
+                  <span
+                    className={p.popular ? "text-white/80" : "text-navy/75"}
+                  >
                     {f}
                   </span>
                 </li>
@@ -100,9 +100,9 @@ export function UnitPricingGrid() {
     <div className="grid gap-6 lg:grid-cols-2">
       {UNIT_PRICING.map((g, gi) => (
         <Reveal key={g.group} delay={gi * 120}>
-          <div className="card h-full overflow-hidden">
+          <div className="h-full overflow-hidden card">
             <div className="flex items-center gap-3 border-b border-line bg-mist px-6 py-5">
-              <span className="icon-box !h-11 !w-11 !text-lg">
+              <span className="icon-box h-11! w-11! text-lg!">
                 <Icon name={g.icon} />
               </span>
               <h3 className="text-[17px] font-bold text-navy">{g.group}</h3>
@@ -154,7 +154,7 @@ export function UnitPricingGrid() {
 /** القسم الكامل كما يظهر في الصفحة الرئيسية. */
 export default function PackagesSection() {
   return (
-    <section className="section bg-mist">
+    <section className="bg-mist section">
       <div className="container-x">
         <SectionHeading
           label="الباقات والعقود"

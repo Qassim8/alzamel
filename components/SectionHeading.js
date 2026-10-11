@@ -18,12 +18,12 @@ export default function SectionHeading({
       }`}
     >
       {label && <span className="eyebrow">{label}</span>}
-      <h2 className={`h-section ${titleTone} ${isCenter ? "max-w-3xl" : ""}`}>
+      <h2
+        className={`heading-section ${titleTone} ${isCenter ? "max-w-3xl" : ""}`}
+      >
         {title}
       </h2>
-      {subtitle && (
-        <p className={`lead max-w-2xl ${subTone}`}>{subtitle}</p>
-      )}
+      {subtitle && <p className={`max-w-2xl lead ${subTone}`}>{subtitle}</p>}
     </Reveal>
   );
 }

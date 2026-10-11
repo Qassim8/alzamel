@@ -25,12 +25,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section bg-mist">
+      <section className="bg-mist section">
         <div className="container-x">
-          <SectionHeading
-            label="قبل ما ترسل"
-            title="ربما تجد إجابتك هنا"
-          />
+          <SectionHeading label="قبل ما ترسل" title="ربما تجد إجابتك هنا" />
           <FAQ items={FAQS.slice(0, 4)} />
         </div>
       </section>

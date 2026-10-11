@@ -25,7 +25,7 @@ export default function ServicesPage() {
 
       {/* شريط تنقل سريع بين الخدمات */}
       <section className="sticky top-[76px] z-30 border-b border-line bg-white/90 backdrop-blur-lg">
-        <div className="container-x flex gap-2 overflow-x-auto py-3.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="container-x flex scrollbar-none gap-2 overflow-x-auto py-3.5 [&::-webkit-scrollbar]:hidden">
           {SERVICES.map((s) => (
             <a
               key={s.id}
@@ -57,7 +57,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="section bg-mist">
+      <section className="bg-mist section">
         <div className="container-x">
           <SectionHeading
             label="كيف نعمل"
@@ -75,7 +75,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <CTABanner title="ما لقيت الخدمة اللي تبيها؟" subtitle="أرسل لنا وصف المكان وما تحتاجه، ونرتّب لك الحل المناسب." />
+      <CTABanner
+        title="ما لقيت الخدمة اللي تبيها؟"
+        subtitle="أرسل لنا وصف المكان وما تحتاجه، ونرتّب لك الحل المناسب."
+      />
     </>
   );
 }

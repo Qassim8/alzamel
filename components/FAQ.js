@@ -42,11 +42,13 @@ export default function FAQ({ items = FAQS }) {
             </button>
             <div
               className={`grid transition-[grid-template-rows,opacity] duration-300 ease-brand ${
-                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                isOpen
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-5 text-[14px] leading-[2] text-muted">
+                <p className="px-5 pb-5 text-[14px] leading-loose text-muted">
                   {f.a}
                 </p>
               </div>

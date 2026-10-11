@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { FaWhatsapp, FaLocationDot, FaTruckFast, FaClock } from "react-icons/fa6";
+import {
+  FaWhatsapp,
+  FaLocationDot,
+  FaTruckFast,
+  FaClock,
+} from "react-icons/fa6";
 import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
@@ -42,9 +47,11 @@ export default function AreasPage() {
       <section className="section">
         <div className="container-x grid items-start gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
           <Reveal>
-            <span className="eyebrow mb-5">اختر مدينتك</span>
-            <h2 className="h-section">اضغط على مدينتك وأرسل طلبك مباشرة</h2>
-            <p className="lead mt-5">
+            <span className="mb-5 eyebrow">اختر مدينتك</span>
+            <h2 className="heading-section">
+              اضغط على مدينتك وأرسل طلبك مباشرة
+            </h2>
+            <p className="mt-5 lead">
               كل مدينة تفتح لك محادثة واتساب برسالة مجهّزة باسم مدينتك — نرد
               عليك بتفاصيل التوفر والسعر.
             </p>
@@ -104,8 +111,8 @@ export default function AreasPage() {
 
             <div className="mt-6 space-y-3">
               {PERKS.map((p) => (
-                <div key={p.title} className="card flex gap-4 p-5">
-                  <span className="icon-box-soft !h-11 !w-11 !text-lg">
+                <div key={p.title} className="flex gap-4 card p-5">
+                  <span className="icon-box-soft h-11! w-11! text-lg!">
                     {p.icon}
                   </span>
                   <div>
@@ -123,7 +130,7 @@ export default function AreasPage() {
         </div>
       </section>
 
-      <section className="section bg-mist">
+      <section className="bg-mist section">
         <div className="container-x">
           <SectionHeading
             label="المقر الرئيسي"

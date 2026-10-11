@@ -18,7 +18,7 @@ export default function ProcessSteps({ tone = "light" }) {
           delay={i * 110}
           className={`relative rounded-brand p-6 transition-all duration-300 ease-brand ${
             dark
-              ? "border border-white/10 bg-white/[.04] hover:bg-white/[.07]"
+              ? "border border-white/10 bg-white/4 hover:bg-white/[.07]"
               : "card-hover"
           }`}
         >

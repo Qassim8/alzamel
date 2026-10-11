@@ -6,10 +6,13 @@ import { LogoMark } from "./Logo";
 export default function PageHeader({ label, title, subtitle }) {
   return (
     <section className="relative overflow-hidden border-b border-line bg-mist">
-      <div className="pointer-events-none absolute inset-0 bg-grid mask-fade-b" aria-hidden="true" />
-      <LogoMark className="pointer-events-none absolute -bottom-10 start-[6%] hidden h-48 w-auto opacity-[.07] lg:block" />
+      <div
+        className="pointer-events-none absolute inset-0 bg-grid mask-fade-b"
+        aria-hidden="true"
+      />
+      <LogoMark className="pointer-events-none absolute inset-s-[6%] -bottom-10 hidden h-48 w-auto opacity-[.07] lg:block" />
 
-      <div className="container-x relative py-14 sm:py-20">
+      <div className="relative container-x py-14 sm:py-20">
         <Reveal>
           <nav
             aria-label="مسار التصفح"
@@ -22,11 +25,11 @@ export default function PageHeader({ label, title, subtitle }) {
             <span className="text-navy">{title}</span>
           </nav>
 
-          {label && <span className="eyebrow mb-4">{label}</span>}
-          <h1 className="h-display max-w-3xl !text-[1.75rem] sm:!text-[2.4rem]">
+          {label && <span className="mb-4 eyebrow">{label}</span>}
+          <h1 className="max-w-3xl heading-display text-[1.75rem]! sm:text-[2.4rem]!">
             {title}
           </h1>
-          {subtitle && <p className="lead mt-5 max-w-2xl">{subtitle}</p>}
+          {subtitle && <p className="mt-5 max-w-2xl lead">{subtitle}</p>}
         </Reveal>
       </div>
     </section>

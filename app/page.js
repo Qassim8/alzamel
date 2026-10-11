@@ -56,7 +56,7 @@ export default function HomePage() {
       </section>
 
       {/* 3. الخدمات — ماذا نقدّم؟ */}
-      <section id="services" className="section bg-mist">
+      <section id="services" className="bg-mist section">
         <div className="container-x">
           <SectionHeading
             label="خدماتنا"
@@ -93,7 +93,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. لماذا الزامل — ما الذي يميّزنا؟ */}
-      <section className="section bg-navy-grad">
+      <section className="bg-navy-grad section">
         <div className="container-x">
           <SectionHeading
             tone="dark"
@@ -106,7 +106,7 @@ export default function HomePage() {
               <Reveal
                 key={f.titleAr}
                 delay={(i % 3) * 110}
-                className="rounded-brand border border-white/10 bg-white/[.04] p-6 transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-turquoise/30 hover:bg-white/[.07]"
+                className="rounded-brand border border-white/10 bg-white/4 p-6 transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-turquoise/30 hover:bg-white/[.07]"
               >
                 <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-[14px] bg-turquoise/15 text-xl text-turquoise">
                   <Icon name={f.icon} />
@@ -127,12 +127,12 @@ export default function HomePage() {
       <section className="section">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal className="order-2 lg:order-1">
-            <span className="eyebrow mb-5">طريقتنا</span>
-            <h2 className="h-section">
+            <span className="mb-5 eyebrow">طريقتنا</span>
+            <h2 className="heading-section">
               لا نكتفي بالسطح —{" "}
               <span className="text-brand-grad">نعمل على العمق</span>
             </h2>
-            <p className="lead mt-5">
+            <p className="mt-5 lead">
               كل زيارة تمرّ ببروتوكول ثابت: سحب الأتربة من الأعماق، إزالة البقع،
               ثم الغسيل والتجفيف والتعقيم والتعطير. نختار المادة حسب نوع الخامة
               حتى نحافظ على الألوان والأقمشة.
@@ -167,9 +167,9 @@ export default function HomePage() {
                   className="h-[380px] w-full object-cover sm:h-[480px]"
                 />
               </div>
-              <div className="absolute -bottom-6 -start-2 max-w-[230px] rounded-2xl border border-line bg-white p-5 shadow-lift sm:-start-6">
+              <div className="absolute -inset-s-2 -bottom-6 max-w-[230px] rounded-2xl border border-line bg-white p-5 shadow-lift sm:-inset-s-6">
                 <FaQuoteRight className="mb-2 text-lg text-turquoise" />
-                <p className="text-[13.5px] font-bold leading-[1.8] text-navy">
+                <p className="text-[13.5px] leading-[1.8] font-bold text-navy">
                   {COMPANY.tagline}
                 </p>
                 <p className="mt-2 text-[12px] text-muted">
@@ -182,7 +182,7 @@ export default function HomePage() {
       </section>
 
       {/* 7. معرض الصور — إثبات بصري */}
-      <section className="section bg-mist">
+      <section className="bg-mist section">
         <div className="container-x">
           <SectionHeading
             label="من الميدان"
@@ -202,7 +202,7 @@ export default function HomePage() {
                     className="h-[300px] w-full object-cover transition-transform duration-700 ease-brand group-hover:scale-[1.06] sm:h-[340px]"
                   />
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    className="absolute inset-0 bg-linear-to-t from-navy/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                     aria-hidden="true"
                   />
                 </div>
@@ -216,14 +216,14 @@ export default function HomePage() {
       <PackagesSection />
 
       {/* 9. التغطية — هل تصلون لمدينتي؟ */}
-      <section className="section bg-mist">
+      <section className="bg-mist section">
         <div className="container-x grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <Reveal>
-            <span className="eyebrow mb-5">مناطق التغطية</span>
-            <h2 className="h-section">
+            <span className="mb-5 eyebrow">مناطق التغطية</span>
+            <h2 className="heading-section">
               مقرّنا الرياض، وخدماتنا تصل إلى {ar(CITIES.length)} مدينة
             </h2>
-            <p className="lead mt-5">
+            <p className="mt-5 lead">
               أسطولنا موحّد بهوية العلامة ويصل إليك في الموعد المتفق عليه. اختر
               مدينتك وأرسل لنا طلبك مباشرة.
             </p>
@@ -238,7 +238,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   className={`chip transition-all duration-300 ease-brand hover:-translate-y-0.5 hover:border-azure/50 hover:text-primary ${
                     c.main
-                      ? "!bg-brand-grad !text-white !border-transparent"
+                      ? "border-transparent! bg-brand-grad! text-white!"
                       : ""
                   }`}
                 >
