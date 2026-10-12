@@ -8,14 +8,16 @@ import { WHY_US } from "@/lib/content/why-us";
 export default function WhyUs() {
   return (
     <section className="relative overflow-hidden bg-navy-grad section">
-      {/* علامة مائية خارج منطقة النص — شفافية ٥٪ فقط */}
-      <LogoMark className="pointer-events-none absolute -inset-s-16 -bottom-24 hidden h-[420px] w-auto opacity-[.05] lg:block" />
+      <LogoMark
+        decorative
+        className="pointer-events-none absolute -inset-s-16 -bottom-24 h-[360px] w-auto opacity-[.1] sm:h-[460px] lg:h-[520px]"
+      />
       <div className="relative container-x">
         <SectionHeading
           tone="dark"
           label="لماذا الزامل كلين"
           title="نظافة تُدار باحتراف — من أول زيارة إلى آخر تفصيلة"
-          subtitle="نركّز على جودة التنفيذ، وضوح السعر، والمرونة التي تناسب مساحتك."
+          subtitle="فريق خبير، جودة عالية، وخيارات مرنة لخدمة تناسب احتياجك."
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {WHY_US.map((f, i) => (

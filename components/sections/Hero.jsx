@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaArrowLeftLong, FaCircleCheck, FaWhatsapp } from "react-icons/fa6";
 import BrandSeal from "@/components/ui/BrandSeal";
 import BubbleField from "@/components/sections/BubbleField";
+import StatsStrip from "@/components/sections/StatsStrip";
 import { WA_MESSAGES, whatsappLink } from "@/lib/whatsapp";
 
 const TRUST_POINTS = ["فريق متخصص", "معدات حديثة", "مواد آمنة"];
@@ -10,7 +11,6 @@ const TRUST_POINTS = ["فريق متخصص", "معدات حديثة", "مواد 
 // مسار متموج عضوي يُقصّ به إطار الصورة
 const WAVE_PATH =
   "M0.14,0.02 C0.36,0 0.62,0.04 0.84,0.03 C0.95,0.02 1,0.1 0.98,0.2 " +
-  "C0.96,0.3 0.86,0.36 0.88,0.48 C0.9,0.6 1,0.64 0.98,0.76 " +
   "C0.96,0.9 0.9,0.98 0.76,0.98 C0.56,0.98 0.4,0.95 0.22,0.98 " +
   "C0.08,1 0,0.92 0.02,0.8 C0.04,0.62 0,0.46 0.03,0.3 " +
   "C0.05,0.14 0.04,0.04 0.14,0.02 Z";
@@ -21,7 +21,7 @@ const WAVE_PATH =
  */
 export default function Hero() {
   return (
-    <section className="relative isolate bleed-under-nav overflow-hidden bg-mist py-12 lg:py-20">
+    <section className="relative isolate z-10 bleed-under-nav flex min-h-svh flex-col overflow-x-clip overflow-y-visible bg-mist pt-12 pb-0 lg:pt-20">
       {/* تعريف قناع الإطار المتموّج */}
       <svg
         width="0"
@@ -39,7 +39,7 @@ export default function Hero() {
 
       <BubbleField />
 
-      <div className="relative z-10 container-x grid items-center gap-14 py-8 lg:grid-cols-2 lg:gap-12">
+      <div className="relative z-10 container-x grid flex-1 items-center gap-8 pt-5 pb-0 sm:gap-14 sm:pt-8 lg:grid-cols-2 lg:gap-12">
         {/* النصوص */}
         <div>
           <h1 className="heading-display">
@@ -82,38 +82,25 @@ export default function Hero() {
         </div>
 
         {/* الصورة داخل الإطار العضوي المتموّج */}
-        <div className="relative">
-          <div className="relative isolate mx-auto w-full max-w-[560px] lg:max-w-full">
-            <div
+        <div className="relative self-end">
+          <div className="relative isolate mx-auto w-full max-w-140 lg:max-w-full">
+            {/* <div
               aria-hidden="true"
               className="hero-blob-bg absolute top-12 right-12 -bottom-6 -left-6 -z-10 sm:-bottom-8 sm:-left-8"
-            />
+            /> */}
 
-            <div className="drop-shadow-[0_28px_40px_rgba(8,47,73,0.28)]">
-              <div
-                className="relative h-[440px] w-full sm:h-[540px] lg:h-[620px]"
-                style={{
-                  clipPath: "url(#hero-wave)",
-                  WebkitClipPath: "url(#hero-wave)",
-                }}
-              >
-                <Image
-                  src="/images/05-sofa-steam.webp"
-                  alt="فنّي الزامل كلين بزيّ العلامة أثناء تنظيف الكنب بالبخار"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 92vw, 560px"
-                  className="object-cover"
-                />
-                <div
-                  className="absolute inset-0 bg-linear-to-t from-navy/50 via-transparent to-transparent"
-                  aria-hidden="true"
-                />
-              </div>
+            <div className="relative h-[clamp(18rem,48svh,28rem)] w-full sm:h-105 lg:h-150">
+              <Image
+                src="/images/02-hero.png"
+                alt="فنّي الزامل كلين بزيّ العلامة أثناء تنظيف الكنب بالبخار"
+                fill
+                priority
+                className="object-cover object-bottom"
+              />
             </div>
 
             {/* حدّ أبيض يتبع الشكل المتموّج */}
-            <svg
+            {/* <svg
               aria-hidden="true"
               viewBox="0 0 1 1"
               preserveAspectRatio="none"
@@ -127,11 +114,14 @@ export default function Hero() {
                 strokeLinejoin="round"
                 vectorEffect="non-scaling-stroke"
               />
-            </svg>
-
-            {/* ختم العلامة على الحافة المواجهة للنص */}
-            <BrandSeal className="absolute -inset-s-5 top-1/2 -translate-y-1/2 sm:-inset-s-8" />
+            </svg> */}
           </div>
+        </div>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 z-20 translate-y-1/2">
+        <div className="container-x">
+          <StatsStrip />
         </div>
       </div>
     </section>

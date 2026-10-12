@@ -1,16 +1,19 @@
+import Image from "next/image";
+
 /**
  * شعار الزامل كلين — مسارات متجهة مستخرجة حرفياً من ملف الهوية المعتمد
  * (AL ZAMIL CLEAN / BRAND IDENTITY — APPROVED EDITION, صفحة 02).
  * لا تُعدّل المسارات أو ألوانها.
  */
-export function LogoMark({ className = "h-9 w-auto" }) {
+export function LogoMark({ className = "h-9 w-auto", decorative = false }) {
   return (
     <svg
       viewBox="0 0 128.0 170.0"
       className={className}
       fill="none"
-      role="img"
-      aria-label="شعار الزامل كلين"
+      role={decorative ? undefined : "img"}
+      aria-label={decorative ? undefined : "شعار الزامل كلين"}
+      aria-hidden={decorative || undefined}
     >
       <path
         fill="#027FD3"
@@ -41,26 +44,19 @@ export function LogoMark({ className = "h-9 w-auto" }) {
  * tone: "navy" فوق الخلفيات الفاتحة | "white" فوق الكحلي.
  */
 export default function Logo({
-  tone = "navy",
   className = "",
-  markClass = "h-10 w-auto",
+  priority = false,
 }) {
-  const main = tone === "white" ? "text-white" : "text-primary-ink";
-  const sub = tone === "white" ? "text-white/65" : "text-primary-ink";
   return (
-    <span className={`flex items-center gap-2.5 ${className}`}>
-      <LogoMark className={markClass} />
-      <span className="flex flex-col leading-none">
-        <span className={`text-title font-bold tracking-tight ${main}`}>
-          الزامل كلين
-        </span>
-        <span
-          dir="ltr"
-          className={`mt-1 font-latin text-micro font-bold tracking-[.17em] ${sub}`}
-        >
-          AL ZAMIL CLEAN
-        </span>
-      </span>
+    <span className={`relative block overflow-hidden ${className}`}>
+      <Image
+        src="/brand/brand.png"
+        alt="الزامل كلين"
+        fill
+        priority={priority}
+        sizes="(max-width: 640px) 160px, 220px"
+        className="scale-[1.3] object-cover object-center"
+      />
     </span>
   );
 }

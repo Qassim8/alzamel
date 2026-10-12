@@ -60,7 +60,7 @@ export default function ServiceCard({ service, compact = false }) {
             {short}
           </p>
         )}
-        <p className="flex-1 text-body leading-[1.95] text-muted">
+        <p className="flex-1 text-body leading-6 text-muted">
           {compact ? short || descAr : descAr}
         </p>
 

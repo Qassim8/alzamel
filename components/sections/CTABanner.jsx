@@ -7,12 +7,16 @@ import { WA_MESSAGES, whatsappLink } from "@/lib/whatsapp";
 export default function CTABanner({
   title = "جاهز لمساحة تلمع من أول نظرة؟",
   subtitle = "أرسل لنا نوع المكان وحجمه، ونرجع لك بالتفاصيل والسعر خلال وقت قصير.",
+  tone = "mist",
 }) {
   return (
-    <section className="section">
+    <section className={`section ${tone === "mist" ? "bg-mist" : ""}`}>
       <div className="container-x">
         <Reveal className="relative overflow-hidden rounded-panel bg-navy-grad px-7 py-14 text-center sm:px-12">
-          <LogoMark className="pointer-events-none absolute -inset-s-12 -bottom-16 h-64 w-auto opacity-[.07]" />
+          <LogoMark
+            decorative
+            className="pointer-events-none absolute -inset-s-12 -bottom-16 h-[360px] w-auto opacity-[.11] sm:h-[440px]"
+          />
           <div
             className="pointer-events-none absolute inset-e-[-5%] -top-24 h-72 w-72 rounded-full opacity-25 blur-3xl"
             style={{

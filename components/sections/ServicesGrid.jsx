@@ -17,12 +17,11 @@ export default function ServicesGrid({ all = false }) {
   const grid = (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((s, i) => (
-        <Reveal
-          key={s.id}
-          delay={(i % 3) * 100}
-          className="h-full scroll-mt-40"
-        >
-          <div id={all ? s.id : undefined} className="h-full">
+        <Reveal key={s.id} delay={(i % 3) * 100} className="h-full">
+          <div
+            id={all ? s.id : undefined}
+            className={`h-full ${all ? "scroll-mt-24 sm:scroll-mt-16" : ""}`}
+          >
             <ServiceCard service={s} />
           </div>
         </Reveal>
@@ -39,7 +38,10 @@ export default function ServicesGrid({ all = false }) {
   }
 
   return (
-    <section id="services" className="bg-mist section">
+    <section
+      id="services"
+      className="relative z-0 pt-42 pb-16 sm:pt-32 sm:pb-24"
+    >
       <div className="container-x">
         <SectionHeading
           label="خدماتنا"
@@ -49,7 +51,7 @@ export default function ServicesGrid({ all = false }) {
         {grid}
         <Reveal delay={120} className="mt-10 text-center">
           <Link href="/services" className="btn-navy">
-            اعرض الخدمات الـ{ar(SERVICES.length)} كاملة
+            اعرض كل الخدمات
             <FaArrowLeftLong className="text-xs" />
           </Link>
         </Reveal>

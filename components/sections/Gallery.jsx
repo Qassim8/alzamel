@@ -40,12 +40,17 @@ export default function Gallery({
                   alt={g.alt}
                   width={1600}
                   height={1067}
-                  sizes="(max-width: 640px) 78vw, (max-width: 1024px) 45vw, 380px"
+                  // ✅ تحديث sizes لتوفير دقة عالية للصورة الكبيرة تناسب مساحتها الفعلية
+                  sizes={
+                    g.feature
+                      ? "(max-width: 1024px) 100vw, 850px"
+                      : "(max-width: 640px) 78vw, (max-width: 1024px) 50vw, 400px"
+                  }
                   style={{ objectPosition: g.pos ?? "center" }}
                   className={`w-full object-cover transition-transform duration-700 ease-brand group-hover:scale-[1.06] ${
                     g.feature
-                      ? "h-[260px] sm:h-[300px] lg:h-full lg:min-h-[500px]"
-                      : "h-[260px] sm:h-[230px] lg:h-[240px]"
+                      ? "h-56 sm:h-75 lg:h-full lg:min-h-125"
+                      : "h-56 sm:h-57.5 lg:h-60"
                   }`}
                 />
               </div>

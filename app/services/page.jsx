@@ -25,18 +25,23 @@ export default function ServicesPage() {
       />
 
       {/* شريط تنقل سريع بين الخدمات — يلتصق تحت الـ Navbar */}
-      <section className="sticky top-(--nav-h) z-30 border-b border-line bg-white/90 backdrop-blur-lg">
-        <div className="container-x flex scrollbar-none gap-2 overflow-x-auto py-3.5 [&::-webkit-scrollbar]:hidden">
-          {SERVICES.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              className="flex shrink-0 items-center gap-2 rounded-full border border-line px-3.5 py-2 text-small font-semibold text-navy/75 transition-all duration-300 ease-brand hover:border-azure/50 hover:text-primary-ink"
-            >
-              <Icon name={s.icon} className="text-primary-ink" />
-              {s.titleAr}
-            </a>
-          ))}
+      <section className="sticky top-(--nav-h) z-30 border-b border-line backdrop-blur-lg">
+        <div className="container-x">
+          <nav
+            aria-label="انتقل مباشرة إلى خدمة"
+            className="service-filter-scrollbar flex [touch-action:pan-x] snap-x snap-mandatory gap-2 overflow-x-auto overscroll-x-contain py-3.5"
+          >
+            {SERVICES.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="flex shrink-0 snap-start items-center gap-2 rounded-full border border-line bg-white px-3.5 py-2 text-small font-semibold text-navy/75 transition-all duration-300 ease-brand hover:border-azure/50 hover:text-primary-ink"
+              >
+                <Icon name={s.icon} className="text-primary-ink" />
+                {s.titleAr}
+              </a>
+            ))}
+          </nav>
         </div>
       </section>
 

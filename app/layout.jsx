@@ -1,4 +1,4 @@
-import { Readex_Pro, Inter } from "next/font/google";
+import { Readex_Pro, Inter, Rubik } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -12,7 +12,7 @@ import { SITE_URL } from "@/lib/site";
 /* الهوية تعتمد Arial (جروتسك محايد). على الويب نستخدم
    Readex Pro للعربي — خط متغيّر فتعمل كل الأوزان 400→700 فعلياً —
    وInter للاتيني. */
-const readex = Readex_Pro({
+const readex = Rubik({
   subsets: ["arabic"], // اللاتيني يأتي من Inter — لا داعي لتحميله مرتين
 
   variable: "--font-readex",

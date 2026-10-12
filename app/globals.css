@@ -129,6 +129,20 @@
   @apply py-16 sm:py-24;
 }
 
+/* تبديل تلقائي لخلفية الأقسام الرئيسية حسب ترتيبها الفعلي داخل الصفحة.
+   الأقسام الداكنة تحافظ على تدرّجها، وتُحتسب مع ذلك في ترتيب التناوب. */
+main#main > section {
+  background-color: #fff;
+}
+
+main#main > section:nth-of-type(even) {
+  background-color: var(--color-mist);
+}
+
+main#main > section.bg-navy-grad {
+  background-color: var(--color-navy);
+}
+
 /* ═══ نصوص ═══ */
 /* بصمة العلامة أعلى كل قسم: القطرة تحلّ محل الخط القصير.
    الأيقونة تأتي من SectionHeading كعنصر فعلي لا كـ ::before. */
@@ -232,6 +246,28 @@
 @utility mask-fade-b {
   -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
   mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+
+.service-filter-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(2, 110, 179, 0.38) transparent;
+}
+
+.service-filter-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.service-filter-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.service-filter-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #02b8d2, #027fd3);
+}
+
+.service-filter-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #0299df, #026eb3);
 }
 
 /* ═══ ظهور العناصر عند التمرير ═══ */

@@ -11,6 +11,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [solid, setSolid] = useState(false);
   const pathname = usePathname();
+  const overDarkHeader = pathname !== "/" && !solid;
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 12);
@@ -57,7 +58,7 @@ export default function Navbar() {
         aria-label="التنقل الرئيسي"
       >
         <Link href="/" aria-label="الزامل كلين — الصفحة الرئيسية">
-          <Logo markClass="h-9 w-auto" />
+          <Logo priority className="h-12 w-40 sm:w-38" />
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
@@ -67,9 +68,13 @@ export default function Navbar() {
                 href={l.href}
                 aria-current={isActive(l.href) ? "page" : undefined}
                 className={`relative rounded-full px-3.5 py-2 text-body font-semibold transition-colors duration-200 ${
-                  isActive(l.href)
-                    ? "text-primary-ink"
-                    : "text-navy/80 hover:text-primary-ink"
+                  overDarkHeader
+                    ? isActive(l.href)
+                      ? "text-turquoise"
+                      : "text-white/90 hover:text-white"
+                    : isActive(l.href)
+                      ? "text-primary-ink"
+                      : "text-navy/80 hover:text-primary-ink"
                 }`}
               >
                 {l.label}
@@ -97,7 +102,11 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
             aria-expanded={open}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-xl text-navy transition-colors hover:border-azure/50 hover:text-primary-ink lg:hidden"
+            className={`flex h-11 w-11 items-center justify-center rounded-full border text-xl transition-colors lg:hidden ${
+              overDarkHeader
+                ? "border-white/35 text-white hover:border-white/70 hover:text-turquoise"
+                : "border-line text-navy hover:border-azure/50 hover:text-primary-ink"
+            }`}
           >
             {open ? <FaXmark /> : <FaBars />}
           </button>

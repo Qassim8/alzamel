@@ -150,7 +150,7 @@ export function UnitPricingGrid() {
 /** القسم الكامل كما يظهر في الصفحة الرئيسية. */
 export default function PackagesSection() {
   return (
-    <section className="bg-mist section">
+    <section className="section">
       <div className="container-x">
         <SectionHeading
           label="الباقات والعقود"

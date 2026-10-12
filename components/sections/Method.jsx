@@ -52,7 +52,7 @@ export default function Method() {
           <div className="relative">
             <div className="overflow-hidden rounded-panel shadow-lift">
               <Image
-                src="/images/outdoor-team.webp"
+                src="/images/courtyard-pressure-wash.webp"
                 alt="فريق الزامل كلين أثناء تنفيذ عملية تنظيف خارجية"
                 width={1000}
                 height={1500}
@@ -65,9 +65,6 @@ export default function Method() {
               <LogoMark className="mb-2.5 h-7 w-auto" />
               <p className="text-small leading-[1.8] font-bold text-navy">
                 {COMPANY.tagline}
-              </p>
-              <p className="mt-2 text-caption text-muted">
-                شعار الزامل كلين المعتمد
               </p>
             </div>
           </div>

@@ -7,7 +7,6 @@ import Method from "@/components/sections/Method";
 import Packages from "@/components/sections/Packages";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import ServicesGrid from "@/components/sections/ServicesGrid";
-import StatsStrip from "@/components/sections/StatsStrip";
 import Testimonials from "@/components/sections/Testimonials";
 import WhyUs from "@/components/sections/WhyUs";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -25,13 +24,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-
-      {/* ثقة سريعة مباشرة بعد الوعد */}
-      <section className="py-14 sm:py-16">
-        <div className="container-x">
-          <StatsStrip />
-        </div>
-      </section>
 
       <ServicesGrid />
 
@@ -52,7 +44,6 @@ export default function HomePage() {
       <Gallery />
       <Testimonials />
       <Packages />
-      <Coverage />
 
       <FaqSection items={FAQS.slice(0, 5)} showAsk />
 

@@ -33,7 +33,7 @@ export default function Footer() {
       <div className="container-x grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         {/* العلامة */}
         <div>
-          <Logo tone="white" markClass="h-10 w-auto" />
+          <Logo className="h-16 w-46" />
           <p className="mt-5 max-w-xs text-small leading-loose text-white/70">
             {COMPANY.promise} نقدّم حلول تنظيف متكاملة للمنازل والفلل والمنشآت
             في {COMPANY.city} وعدد من مدن المملكة.
@@ -131,16 +131,6 @@ export default function Footer() {
             <FaWhatsapp /> راسلنا على واتساب
           </a>
         </div>
-      </div>
-
-      {/* ختام الصفحة: اسم العلامة عريضاً بسطر واحد ومقصوصاً من الأسفل */}
-      <div aria-hidden="true" className="container-x overflow-hidden">
-        <p
-          dir="ltr"
-          className="-mb-[0.3em] text-center font-latin text-[clamp(2rem,10.6vw,8.1rem)] leading-[0.78] font-extrabold tracking-tight whitespace-nowrap text-white/[.06] select-none"
-        >
-          AL ZAMIL CLEAN
-        </p>
       </div>
 
       <div className="border-t border-white/10">

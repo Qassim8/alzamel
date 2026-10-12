@@ -15,7 +15,7 @@ import { WHY_US } from "@/lib/content/why-us";
 export const metadata = {
   title: "لماذا تختارنا",
   description:
-    "فريق موحّد بزيّ العلامة، مواد آمنة ومعتمدة، تسعير واضح قبل البدء، وبروتوكول تنظيف ثابت في كل زيارة.",
+    "فريق خبير، معدات حديثة ومواد عالية الجودة، وخيارات تنظيف مرنة للمنازل والمنشآت.",
   alternates: { canonical: "/why-us" },
 };
 
@@ -70,8 +70,12 @@ export default function WhyUsPage() {
       </section>
 
       {/* مبادئ الهوية */}
-      <section className="bg-navy-grad section">
-        <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <section className="relative overflow-hidden bg-navy-grad section">
+        <LogoMark
+          decorative
+          className="pointer-events-none absolute -inset-e-16 -bottom-24 h-[420px] w-auto opacity-[.1] sm:h-[500px]"
+        />
+        <div className="relative z-10 container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <span className="mb-5 eyebrow text-turquoise!">
               <LogoMark className="h-3.5 w-auto" />
@@ -104,14 +108,12 @@ export default function WhyUsPage() {
 
           <Reveal delay={150}>
             <div className="relative">
-              <div className="overflow-hidden rounded-panel shadow-lift">
+              <div className="h-120 overflow-hidden rounded-panel shadow-lift">
                 <Image
-                  src="/images/facade-cleaning.webp"
+                  src="/images/10-patio.png"
                   alt="فنّي الزامل كلين أثناء تنظيف واجهة خارجية"
-                  width={1000}
-                  height={1500}
-                  sizes="(max-width:1024px) 92vw, 520px"
-                  className="h-[400px] w-full object-cover sm:h-[500px]"
+                  fill
+                  className="h-full w-full rounded-panel object-cover"
                 />
               </div>
               <div className="absolute -inset-s-2 -bottom-5 max-w-[240px] rounded-2xl bg-white p-5 shadow-lift sm:-inset-s-6">
@@ -137,11 +139,12 @@ export default function WhyUsPage() {
       </section>
 
       <Gallery
+        tone="mist"
         title="هكذا يصلك الفريق"
         subtitle="زيّ موحّد بألوان العلامة ومعدات جاهزة في كل زيارة."
       />
 
-      <CTABanner />
+      <CTABanner tone="light" />
     </>
   );
 }
