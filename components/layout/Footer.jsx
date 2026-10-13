@@ -33,10 +33,11 @@ export default function Footer() {
       <div className="container-x grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         {/* العلامة */}
         <div>
-          <Logo className="h-16 w-46" />
+          <Logo className="h-16 w-36 md:w-46" />
           <p className="mt-5 max-w-xs text-small leading-loose text-white/70">
-            {COMPANY.promise} نقدّم حلول تنظيف متكاملة للمنازل والفلل والمنشآت
-            في {COMPANY.city} وعدد من مدن المملكة.
+            نقدّم حلول تنظيف متكاملة للمنازل والفلل والشقق والمنشآت في{" "}
+            {COMPANY.city} وعدد من أحياء الرياض، لنمنحك بيئة نظيفة ومنعشة تنعم
+            فيها بالراحة والاطمئنان.
           </p>
           {ACTIVE_SOCIALS.length > 0 && (
             <div className="mt-6 flex gap-2.5">

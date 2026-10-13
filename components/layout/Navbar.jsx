@@ -58,7 +58,7 @@ export default function Navbar() {
         aria-label="التنقل الرئيسي"
       >
         <Link href="/" aria-label="الزامل كلين — الصفحة الرئيسية">
-          <Logo priority className="h-12 w-40 sm:w-38" />
+          <Logo priority className="h-12 w-32 sm:w-38" />
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">

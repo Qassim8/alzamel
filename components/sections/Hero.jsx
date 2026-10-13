@@ -41,37 +41,37 @@ export default function Hero() {
 
       <div className="relative z-10 container-x grid flex-1 items-center gap-8 pt-5 pb-0 sm:gap-14 sm:pt-8 lg:grid-cols-2 lg:gap-12">
         {/* النصوص */}
-        <div>
+        <div className="mt-10 md:mt-0">
           <h1 className="heading-display">
             خلّ النظافة علينا
             <br />
             <span className="text-brand-grad">والراحة لك</span>
           </h1>
 
-          <p className="mt-6 max-w-xl lead">
+          <p className="mt-6 max-w-xl md:lead">
             من تنظيف ما بعد التشطيب إلى التنظيف العميق للمنازل والمنشآت، نمنح كل
             مساحة عناية تستحقها، بفريق متخصص ومعدات حديثة ومواد آمنة. لأن
             النظافة الحقيقية ليست مجرد مظهر، بل راحة تبدأ من التفاصيل.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex gap-3">
             <a
               href={whatsappLink(WA_MESSAGES.book)}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className="btn-primary text-xs md:text-base"
             >
-              <FaWhatsapp className="text-lg" />
+              <FaWhatsapp className="text-xs md:text-lg" />
               احجز خدمة التنظيف
             </a>
 
-            <Link href="/services" className="btn-ghost">
+            <Link href="/services" className="btn-ghost text-xs md:text-base">
               اكتشف خدماتنا
               <FaArrowLeftLong className="text-xs" />
             </Link>
           </div>
 
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-navy/80">
+          <ul className="mt-8 hidden flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-navy/80 md:flex">
             {TRUST_POINTS.map((point) => (
               <li key={point} className="flex items-center gap-2">
                 <FaCircleCheck className="text-primary-ink" />
@@ -123,9 +123,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* الجوال: الشريط في التدفّق العادي أسفل الصورة حتى لا يغطّيها.
-          من 640px فأعلى يعود متراكباً على حافة الهيرو كما هو. */}
-      <div className="relative z-20 mt-10 mb-2 sm:absolute sm:inset-x-0 sm:bottom-0 sm:my-0 sm:translate-y-1/2">
+      <div className="relative z-20 mb-0 sm:absolute sm:inset-x-0 sm:bottom-0 sm:my-0 sm:translate-y-1/2">
         <div className="container-x">
           <StatsStrip />
         </div>

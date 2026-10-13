@@ -27,20 +27,21 @@ export default function CTABanner({
           <div className="relative mx-auto flex max-w-2xl flex-col items-center gap-5">
             <h2 className="heading-section text-white!">{title}</h2>
             <p className="text-lead leading-loose text-white/70">{subtitle}</p>
-            <div className="mt-2 flex flex-wrap justify-center gap-3">
+            <div className="mt-2 flex justify-center gap-3">
               <a
                 href={whatsappLink(WA_MESSAGES.quote)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-white"
               >
-                <FaWhatsapp className="text-lg text-[#25D366]" /> واتساب مباشر
+                <FaWhatsapp className="text-base text-[#25D366] md:text-lg" />{" "}
+                واتساب
               </a>
               <a
                 href={`tel:+${COMPANY.phoneIntl}`}
                 className="btn border border-white/25 text-white hover:bg-white/10"
               >
-                <FaPhone /> <span dir="ltr">{COMPANY.phoneDisplay}</span>
+                <FaPhone /> <span dir="ltr">اتصال</span>
               </a>
             </div>
           </div>
