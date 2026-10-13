@@ -1,20 +1,18 @@
-import { Readex_Pro, Inter, Rubik } from "next/font/google";
+import { Inter, Rubik } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import MobileActionBar from "@/components/layout/MobileActionBar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
-import { CITIES } from "@/lib/content/cities";
-import { COMPANY, OPENING_HOURS } from "@/lib/content/company";
-import { ACTIVE_SOCIALS } from "@/lib/content/socials";
+import JsonLd from "@/components/seo/JsonLd";
+import { COMPANY } from "@/lib/content/company";
+import { businessSchema, websiteSchema } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 /* الهوية تعتمد Arial (جروتسك محايد). على الويب نستخدم
-   Readex Pro للعربي — خط متغيّر فتعمل كل الأوزان 400→700 فعلياً —
-   وInter للاتيني. */
-const readex = Rubik({
+   Rubik للعربي — خط متغيّر فتعمل كل الأوزان فعلياً — وInter للاتيني. */
+const arabic = Rubik({
   subsets: ["arabic"], // اللاتيني يأتي من Inter — لا داعي لتحميله مرتين
-
   variable: "--font-readex",
   display: "swap",
 });
@@ -28,74 +26,71 @@ const inter = Inter({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "الزامل كلين | شركة تنظيف في الرياض — نظافة تأهيلية وتنظيف عميق",
+    default: "شركة تنظيف في الرياض | الزامل كلين — نظافة تأهيلية وتنظيف عميق",
     template: "%s | الزامل كلين",
   },
   description:
-    "الزامل كلين — شركة تنظيف متخصصة في الرياض. نظافة تأهيلية بعد التشطيب، تنظيف عميق وتعقيم، كنب وسجاد وستائر، خزانات مياه، واجهات وأحواش، ومكافحة حشرات. باقات دورية وعقود للمنشآت.",
+    "شركة تنظيف منازل وفلل ومنشآت في الرياض. نظافة تأهيلية بعد التشطيب، تنظيف عميق وتعقيم، تنظيف كنب وسجاد وستائر، غسيل خزانات المياه، واجهات وأحواش، ومكافحة حشرات. احجز عبر واتساب.",
+  applicationName: COMPANY.nameAr,
+  authors: [{ name: COMPANY.nameAr }],
+  creator: COMPANY.nameAr,
+  publisher: COMPANY.nameAr,
+  category: "خدمات التنظيف",
   keywords: [
-    "شركة تنظيف الرياض",
-    "نظافة تأهيلية",
-    "تنظيف عميق",
-    "تنظيف كنب",
-    "تنظيف سجاد",
-    "تنظيف ستائر",
-    "غسيل خزانات",
-    "تنظيف واجهات",
-    "مكافحة حشرات",
-    "عقود نظافة",
+    "شركة تنظيف بالرياض",
+    "تنظيف منازل الرياض",
+    "تنظيف فلل بالرياض",
+    "نظافة تأهيلية بعد التشطيب",
+    "تنظيف عميق وتعقيم",
+    "تنظيف كنب بالبخار",
+    "تنظيف سجاد وموكيت",
+    "غسيل خزانات المياه",
+    "تنظيف واجهات زجاج",
+    "مكافحة حشرات بالرياض",
+    "عقود نظافة للمنشآت",
     "الزامل كلين",
   ],
-  authors: [{ name: COMPANY.nameAr }],
+  alternates: {
+    canonical: "/",
+    languages: { "ar-SA": "/" },
+  },
   openGraph: {
     type: "website",
     locale: "ar_SA",
     siteName: COMPANY.nameAr,
-    title: "الزامل كلين | مساحة أنقى، إحساس أجمل",
+    title: "شركة تنظيف في الرياض | الزامل كلين",
     description:
-      "حلول تنظيف متكاملة للمنازل والفلل والمنشآت — فريق موحّد، معدات حديثة، ومواد آمنة ومعتمدة.",
+      "حلول تنظيف متكاملة للمنازل والفلل والمنشآت في الرياض — فريق متخصص، معدات حديثة، ومواد آمنة ومعتمدة.",
     url: SITE_URL,
   },
-  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: "شركة تنظيف في الرياض | الزامل كلين",
+    description:
+      "نظافة تأهيلية، تنظيف عميق، كنب وسجاد وستائر، خزانات، واجهات، ومكافحة حشرات — في الرياض.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    },
+  }),
 };
 
 export const viewport = {
   themeColor: "#082F49",
   // لازم حتى تعمل env(safe-area-inset-bottom) في شريط إجراءات الجوال
   viewportFit: "cover",
-};
-
-const JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: COMPANY.nameAr,
-  alternateName: COMPANY.nameEn,
-  description:
-    "شركة تنظيف متخصصة في الرياض — نظافة تأهيلية، تنظيف عميق، مفروشات، خزانات، واجهات ومكافحة حشرات.",
-  url: SITE_URL,
-  telephone: `+${COMPANY.phoneIntl}`,
-  email: COMPANY.email,
-  logo: `${SITE_URL}/icon.svg`,
-  image: `${SITE_URL}/opengraph-image.jpg`,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "الرياض",
-    addressCountry: "SA",
-  },
-  // الجمعة بموعد مسبق فلا تُدرج ضمن الأوقات الثابتة
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: OPENING_HOURS.days,
-      opens: OPENING_HOURS.opens,
-      closes: OPENING_HOURS.closes,
-    },
-  ],
-  areaServed: CITIES.map((c) => ({ "@type": "City", name: c.name })),
-  ...(ACTIVE_SOCIALS.length > 0 && {
-    sameAs: ACTIVE_SOCIALS.map((s) => s.href),
-  }),
-  priceRange: "$$",
 };
 
 export default function RootLayout({ children }) {
@@ -105,7 +100,7 @@ export default function RootLayout({ children }) {
       dir="rtl"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${readex.variable} ${inter.variable}`}
+      className={`${arabic.variable} ${inter.variable}`}
     >
       <head>
         {/* يفعّل حركات الظهور فقط عند توفّر جافاسكربت */}
@@ -129,10 +124,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <WhatsAppFloat />
         <MobileActionBar />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
-        />
+        <JsonLd data={[businessSchema, websiteSchema]} />
       </body>
     </html>
   );

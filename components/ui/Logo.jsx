@@ -43,10 +43,7 @@ export function LogoMark({ className = "h-9 w-auto", decorative = false }) {
  * القفل الكامل: القطرة + الاسم العربي + اللاتيني.
  * tone: "navy" فوق الخلفيات الفاتحة | "white" فوق الكحلي.
  */
-export default function Logo({
-  className = "",
-  priority = false,
-}) {
+export default function Logo({ className = "", priority = false }) {
   return (
     <span className={`relative block overflow-hidden ${className}`}>
       <Image

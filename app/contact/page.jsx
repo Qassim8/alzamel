@@ -3,17 +3,32 @@ import ContactForm from "@/components/sections/ContactForm";
 import FAQ from "@/components/ui/FaqList";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { FAQS } from "@/lib/content/faqs";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "تواصل معنا",
+  title: "تواصل معنا — طلب خدمة تنظيف في الرياض",
   description:
-    "اطلب خدمة أو عرض سعر من الزامل كلين — عبر النموذج أو واتساب مباشرة. الرياض وأكثر من ١٦ مدينة.",
+    "اطلب خدمة تنظيف أو عرض سعر من الزامل كلين في الرياض — عبر نموذج الموقع أو واتساب مباشرة. نرد على طلبك في أسرع وقت.",
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "تواصل مع الزامل كلين — تنظيف في الرياض",
+    description: "اطلب خدمة أو عرض سعر عبر النموذج أو واتساب مباشرة.",
+    url: "/contact",
+    type: "website",
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "الرئيسية", path: "/" },
+          { name: "تواصل معنا", path: "/contact" },
+        ])}
+      />
+
       <PageHeader
         label="تواصل معنا"
         title="اطلب خدمة أو اترك لنا رسالة"

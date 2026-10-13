@@ -7,17 +7,33 @@ import FAQ from "@/components/ui/FaqList";
 import { PackagesGrid, UnitPricingGrid } from "@/components/sections/Packages";
 import { FAQS } from "@/lib/content/faqs";
 import { WA_MESSAGES, whatsappLink } from "@/lib/whatsapp";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "الباقات والأسعار",
+  title: "باقات وأسعار التنظيف في الرياض",
   description:
-    "باقات تنظيف شهرية وربع سنوية وعقود سنوية للمنشآت، وتسعير الشقق والفلل حسب الحجم — الزامل كلين.",
+    "باقات تنظيف شهرية وربع سنوية وعقود سنوية للمنشآت في الرياض، وتسعير الشقق والفلل حسب عدد الغرف والمساحة. السعر يُثبَّت قبل بدء العمل.",
   alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: "باقات وأسعار التنظيف في الرياض",
+    description:
+      "باقات شهرية وربع سنوية وعقود سنوية للمنشآت، وتسعير الشقق والفلل حسب الحجم.",
+    url: "/pricing",
+    type: "website",
+  },
 };
 
 export default function PricingPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "الرئيسية", path: "/" },
+          { name: "الباقات والأسعار", path: "/pricing" },
+        ])}
+      />
+
       <PageHeader
         label="الباقات والأسعار"
         title="تسعير واضح حسب حجم المكان"

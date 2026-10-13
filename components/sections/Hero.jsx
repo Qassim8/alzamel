@@ -93,7 +93,7 @@ export default function Hero() {
                 بلا قص ولا تمدد. من 640px فأعلى يعود السلوك الأصلي تماماً. */}
             <div className="relative mx-auto aspect-1167/1347 w-full max-w-80 sm:aspect-auto sm:h-105 sm:max-w-none lg:h-150">
               <Image
-                src="/images/02-hero.png"
+                src="/images/02-hero.webp"
                 alt="فنّي الزامل كلين بالزيّ الرسمي يحمل أدوات التنظيف — خدمات تنظيف منازل في الرياض"
                 fill
                 priority

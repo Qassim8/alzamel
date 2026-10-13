@@ -11,10 +11,28 @@ import Testimonials from "@/components/sections/Testimonials";
 import WhyUs from "@/components/sections/WhyUs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { FAQS } from "@/lib/content/faqs";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema, faqSchema } from "@/lib/seo";
+
+/* الأسئلة الظاهرة في الصفحة — نفسها المستخدمة في بيانات FAQPage
+   حتى تتطابق البيانات المنظّمة مع المحتوى المرئي (شرط Google). */
+const HOME_FAQS = FAQS.slice(0, 5);
 
 export const metadata = {
-  title: "الزامل كلين | شركة تنظيف في الرياض — نظافة تأهيلية وتنظيف عميق",
+  // العنوان الافتراضي من layout يغطّي الرئيسية — لا نكرّر اسم العلامة مرتين
+  title: {
+    absolute: "شركة تنظيف في الرياض | الزامل كلين — نظافة تأهيلية وتنظيف عميق",
+  },
+  description:
+    "الزامل كلين شركة تنظيف في الرياض: نظافة تأهيلية بعد التشطيب، تنظيف عميق وتعقيم للمنازل والفلل، تنظيف كنب وسجاد وستائر، غسيل خزانات، واجهات وأحواش، ومكافحة حشرات. باقات دورية وعقود للمنشآت — احجز عبر واتساب.",
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "شركة تنظيف في الرياض | الزامل كلين",
+    description:
+      "نظافة تأهيلية، تنظيف عميق وتعقيم، مفروشات، خزانات، واجهات، ومكافحة حشرات — بفريق متخصص ومواد آمنة.",
+    url: "/",
+    type: "website",
+  },
 };
 
 /* ترتيب الصفحة يتبع رحلة الزائر:
@@ -23,6 +41,13 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([{ name: "الرئيسية", path: "/" }]),
+          faqSchema(HOME_FAQS),
+        ]}
+      />
+
       <Hero />
 
       <ServicesGrid />
@@ -45,7 +70,7 @@ export default function HomePage() {
       <Testimonials />
       <Packages />
 
-      <FaqSection items={FAQS.slice(0, 5)} showAsk />
+      <FaqSection items={HOME_FAQS} showAsk />
 
       <CTABanner />
     </>

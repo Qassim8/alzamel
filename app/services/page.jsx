@@ -7,17 +7,37 @@ import Icon from "@/components/ui/Icon";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { SERVICES } from "@/lib/content/services";
 import { ar } from "@/lib/format";
+import JsonLd from "@/components/seo/JsonLd";
+import { FAQS } from "@/lib/content/faqs";
+import { breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "خدماتنا — ١٢ خدمة تنظيف متخصصة",
+  title: "خدمات التنظيف في الرياض — ١٢ خدمة متخصصة",
   description:
-    "النظافة التأهيلية، التنظيف العميق، الكنب والمفروشات، السجاد والموكيت، الخيام، الستائر والنوافذ، المطابخ ودورات المياه، الواجهات والأحواش، الحدائق، خزانات المياه، الثريات، ومكافحة الحشرات.",
+    "خدمات الزامل كلين في الرياض: نظافة تأهيلية بعد التشطيب، تنظيف عميق وتعقيم، تنظيف كنب ومفروشات، سجاد وموكيت، خيام وبيوت شعر، ستائر ونوافذ، مطابخ ودورات مياه، واجهات وأحواش، حدائق، خزانات مياه، ثريات، ومكافحة حشرات.",
   alternates: { canonical: "/services" },
+  openGraph: {
+    title: "خدمات التنظيف في الرياض — ١٢ خدمة متخصصة",
+    description:
+      "من النظافة التأهيلية بعد التشطيب إلى تنظيف الكنب والسجاد والخزانات والواجهات ومكافحة الحشرات.",
+    url: "/services",
+    type: "website",
+  },
 };
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "الرئيسية", path: "/" },
+            { name: "خدماتنا", path: "/services" },
+          ]),
+          faqSchema(FAQS),
+        ]}
+      />
+
       <PageHeader
         label="خدماتنا"
         title={`${ar(SERVICES.length)} خدمة تنظيف متخصصة`}

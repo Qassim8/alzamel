@@ -34,9 +34,9 @@ const MOBILE_BUBBLES = [
   { x: "-7%", y: "12rem", size: 56, dur: 10, delay: 0 },
   { x: "2%", y: "25.5rem", size: 40, dur: 8, delay: -2.5 },
   { x: "-4%", y: "33rem", size: 30, dur: 7, delay: -4 },
-  { x: "96%", y: "38rem", size: 36, dur: 9, delay: -1.5 },
+  { x: "98%", y: "38rem", size: 30, dur: 9, delay: -1.5 },
   { x: "-3%", y: "45rem", size: 26, dur: 6.5, delay: -3 },
-  { x: "95%", y: "50rem", size: 44, dur: 11, delay: -5 },
+  { x: "98%", y: "50rem", size: 34, dur: 11, delay: -5 },
 ];
 
 const vars = (b) => ({

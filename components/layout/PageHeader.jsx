@@ -9,7 +9,7 @@ export default function PageHeader({ label, title, subtitle }) {
       className="relative bleed-under-nav overflow-hidden border-b border-white/15 bg-navy"
       style={{
         backgroundImage:
-          "linear-gradient(112deg, rgba(8, 47, 73, .75), rgba(8, 47, 73, .85)), url('/images/yard.jpg')",
+          "linear-gradient(112deg, rgba(8, 47, 73, .75), rgba(8, 47, 73, .85)), url('/images/yard.webp')",
         backgroundPosition: "center",
         backgroundSize: "cover",
       }}

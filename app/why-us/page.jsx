@@ -11,12 +11,21 @@ import Reveal from "@/components/ui/Reveal";
 import Icon from "@/components/ui/Icon";
 import { COMPANY } from "@/lib/content/company";
 import { WHY_US } from "@/lib/content/why-us";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "لماذا تختارنا",
+  title: "لماذا تختارنا لتنظيف منزلك أو منشأتك",
   description:
-    "فريق خبير، معدات حديثة ومواد عالية الجودة، وخيارات تنظيف مرنة للمنازل والمنشآت.",
+    "ما الذي يميّز الزامل كلين في الرياض: فريق متخصص بزيّ موحّد، معدات حديثة، مواد تنظيف آمنة ومعتمدة، بروتوكول ثابت في كل زيارة، وسعر واضح قبل البدء.",
   alternates: { canonical: "/why-us" },
+  openGraph: {
+    title: "لماذا تختارنا لتنظيف منزلك أو منشأتك",
+    description:
+      "فريق متخصص، معدات حديثة، مواد آمنة ومعتمدة، وسعر واضح قبل بدء العمل.",
+    url: "/why-us",
+    type: "website",
+  },
 };
 
 const PRINCIPLES = [
@@ -37,6 +46,13 @@ const PRINCIPLES = [
 export default function WhyUsPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "الرئيسية", path: "/" },
+          { name: "لماذا الزامل", path: "/why-us" },
+        ])}
+      />
+
       <PageHeader
         label="لماذا الزامل كلين"
         title="نظافة تُدار باحتراف، لا بالصدفة"
@@ -110,7 +126,7 @@ export default function WhyUsPage() {
             <div className="relative">
               <div className="h-120 overflow-hidden rounded-panel shadow-lift">
                 <Image
-                  src="/images/10-patio.png"
+                  src="/images/10-patio.webp"
                   alt="فنّي الزامل كلين أثناء تنظيف واجهة خارجية"
                   fill
                   className="h-full w-full rounded-panel object-cover"
