@@ -10,8 +10,17 @@ import { whatsappLink } from "@/lib/whatsapp";
  * بألوان الهوية مع أيقونة الخدمة — فيبقى النظام متناسقاً في الحالتين.
  */
 export default function ServiceCard({ service, compact = false }) {
-  const { titleAr, descAr, short, points, icon, image, imageAlt, message } =
-    service;
+  const {
+    titleAr,
+    descAr,
+    short,
+    points,
+    icon,
+    image,
+    imageAlt,
+    priceFrom,
+    message,
+  } = service;
 
   return (
     <article className="group flex h-full card-hover flex-col overflow-hidden">
@@ -77,6 +86,17 @@ export default function ServiceCard({ service, compact = false }) {
               </li>
             ))}
           </ul>
+        )}
+
+        {priceFrom && (
+          <p className="mb-4 flex items-baseline gap-1.5 border-t border-line pt-4">
+            <span className="text-caption font-semibold text-muted">
+              يبدأ من
+            </span>
+            <span className="text-card font-bold text-primary-ink">
+              {priceFrom.display}
+            </span>
+          </p>
         )}
 
         <a
