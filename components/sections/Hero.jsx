@@ -89,13 +89,17 @@ export default function Hero() {
               className="hero-blob-bg absolute top-12 right-12 -bottom-6 -left-6 -z-10 sm:-bottom-8 sm:-left-8"
             /> */}
 
-            <div className="relative h-[clamp(18rem,48svh,28rem)] w-full sm:h-105 lg:h-150">
+            {/* الجوال: نسبة الصورة الأصلية + object-contain فتظهر كاملة
+                بلا قص ولا تمدد. من 640px فأعلى يعود السلوك الأصلي تماماً. */}
+            <div className="relative mx-auto aspect-1167/1347 w-full max-w-80 sm:aspect-auto sm:h-105 sm:max-w-none lg:h-150">
               <Image
                 src="/images/02-hero.png"
-                alt="فنّي الزامل كلين بزيّ العلامة أثناء تنظيف الكنب بالبخار"
+                alt="فنّي الزامل كلين بالزيّ الرسمي يحمل أدوات التنظيف — خدمات تنظيف منازل في الرياض"
                 fill
                 priority
-                className="object-cover object-bottom"
+                fetchPriority="high"
+                sizes="(max-width: 639px) 20rem, (max-width: 1024px) 560px, 50vw"
+                className="object-contain object-bottom sm:object-cover"
               />
             </div>
 
@@ -119,7 +123,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-20 translate-y-1/2">
+      {/* الجوال: الشريط في التدفّق العادي أسفل الصورة حتى لا يغطّيها.
+          من 640px فأعلى يعود متراكباً على حافة الهيرو كما هو. */}
+      <div className="relative z-20 mt-10 mb-2 sm:absolute sm:inset-x-0 sm:bottom-0 sm:my-0 sm:translate-y-1/2">
         <div className="container-x">
           <StatsStrip />
         </div>

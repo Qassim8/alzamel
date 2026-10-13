@@ -354,14 +354,6 @@ main#main > section.bg-navy-grad {
   transform: rotate(-35deg);
 }
 
-/* تصغير الفقاعات على الجوال */
-@media (max-width: 639px) {
-  .bubble {
-    width: calc(var(--s, 60px) * 0.6);
-    height: calc(var(--s, 60px) * 0.6);
-  }
-}
-
 @keyframes bubble-float {
   0%,
   100% {
