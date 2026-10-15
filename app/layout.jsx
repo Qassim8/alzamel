@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import MobileActionBar from "@/components/layout/MobileActionBar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
+import QuickPriceFloat from "@/components/layout/QuickPriceFloat";
 import JsonLd from "@/components/seo/JsonLd";
 import { COMPANY } from "@/lib/content/company";
 import { businessSchema, websiteSchema } from "@/lib/seo";
@@ -123,6 +124,7 @@ export default function RootLayout({ children }) {
         </main>
         <Footer />
         <WhatsAppFloat />
+        <QuickPriceFloat />
         <MobileActionBar />
         <JsonLd data={[businessSchema, websiteSchema]} />
       </body>

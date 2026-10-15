@@ -301,6 +301,52 @@ main#main > section.bg-navy-grad {
   direction: ltr;
 }
 
+.quick-price-float {
+  animation: quick-price-bob 2.8s ease-in-out infinite;
+}
+.quick-price-icon {
+  animation: quick-price-glow 2.8s ease-in-out infinite;
+}
+
+@keyframes quick-price-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 10px 24px -10px rgba(8, 47, 73, 0.6);
+  }
+  50% {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 30px -12px rgba(2, 184, 210, 0.75);
+  }
+}
+
+@keyframes quick-price-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(2, 184, 210, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(2, 184, 210, 0);
+  }
+}
+
+.quick-estimator-dialog {
+  width: min(calc(100% - 2rem), 44rem);
+  max-height: min(90dvh, 48rem);
+  overflow-y: auto;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 1.5rem;
+  background: white;
+  color: inherit;
+  box-shadow: 0 24px 80px rgba(8, 47, 73, 0.3);
+}
+.quick-estimator-dialog::backdrop {
+  background: rgba(8, 47, 73, 0.65);
+  backdrop-filter: blur(5px);
+}
+
 .marquee-group {
   display: flex;
   align-items: center;
@@ -484,7 +530,9 @@ main#main > section.bg-navy-grad {
   .bubble,
   .bubble::before,
   .hero-blob-bg,
-  .brand-seal {
+  .brand-seal,
+  .quick-price-float,
+  .quick-price-icon {
     animation: none !important;
   }
 }

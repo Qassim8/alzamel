@@ -48,11 +48,10 @@ export default function Hero() {
             <span className="text-brand-grad">والراحة لك</span>
           </h1>
 
-          {/* <p className="mt-6 max-w-xl md:lead">
+          <p className="mt-6 max-w-xl md:lead">
             من تنظيف ما بعد التشطيب إلى التنظيف العميق للمنازل والمنشآت، نمنح كل
-            مساحة عناية تستحقها، بفريق متخصص ومعدات حديثة ومواد آمنة. لأن
-            النظافة الحقيقية ليست مجرد مظهر، بل راحة تبدأ من التفاصيل.
-          </p> */}
+            مساحة عناية تستحقها.
+          </p>
 
           <div className="mt-8 flex gap-3">
             <a
