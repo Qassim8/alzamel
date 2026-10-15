@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaWhatsapp, FaCheck } from "react-icons/fa6";
 import Icon from "@/components/ui/Icon";
 import { LogoMark } from "@/components/ui/Logo";
@@ -18,6 +19,7 @@ export default function ServiceCard({ service, compact = false }) {
     icon,
     image,
     imageAlt,
+    slug,
     priceFrom,
     message,
   } = service;
@@ -97,6 +99,15 @@ export default function ServiceCard({ service, compact = false }) {
               {priceFrom.display}
             </span>
           </p>
+        )}
+
+        {slug && (
+          <Link
+            href={`/services/${slug}`}
+            className="mb-2 inline-flex w-full items-center justify-center gap-2 rounded-full border border-line px-4 py-2.5 text-small font-bold text-navy transition-colors duration-300 hover:border-azure/50 hover:text-primary-ink"
+          >
+            تفاصيل الخدمة
+          </Link>
         )}
 
         <a

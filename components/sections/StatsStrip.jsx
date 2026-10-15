@@ -2,9 +2,17 @@ import { FaCircleCheck, FaAward, FaFaceSmile, FaBroom } from "react-icons/fa6";
 import Counter from "@/components/ui/Counter";
 import Reveal from "@/components/ui/Reveal";
 import { STATS } from "@/lib/content/stats";
+import { BsChatDotsFill } from "react-icons/bs";
+import { PiArrowsClockwiseBold } from "react-icons/pi";
 
 // بنفس ترتيب STATS في lib/data
-const STAT_ICONS = [FaBroom, FaCircleCheck, FaAward, FaFaceSmile];
+const STAT_ICONS = [
+  FaBroom,
+  BsChatDotsFill,
+  PiArrowsClockwiseBold,
+  FaAward,
+  FaFaceSmile,
+];
 
 export default function StatsStrip({ tone = "light" }) {
   const dark = tone === "dark";
@@ -13,7 +21,7 @@ export default function StatsStrip({ tone = "light" }) {
     /* لوحة واحدة مقسّمة بخطوط رفيعة: الخلفية تظهر من خلال gap-px
        فتعطي فواصل صحيحة في 2×2 على الجوال و4 أعمدة على الحاسوب */
     <div
-      className={`-mb-20 grid grid-cols-3 gap-px overflow-hidden rounded-3xl border md:mb-0 lg:grid-cols-3 ${
+      className={`-mb-20 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border md:mb-0 lg:grid-cols-4 ${
         dark
           ? "border-white/10 bg-white/10"
           : "border-line bg-line md:shadow-[0_20px_50px_-24px_rgba(8,47,73,0.25)]"

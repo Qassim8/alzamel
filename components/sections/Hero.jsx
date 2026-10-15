@@ -48,11 +48,11 @@ export default function Hero() {
             <span className="text-brand-grad">والراحة لك</span>
           </h1>
 
-          <p className="mt-6 max-w-xl md:lead">
+          {/* <p className="mt-6 max-w-xl md:lead">
             من تنظيف ما بعد التشطيب إلى التنظيف العميق للمنازل والمنشآت، نمنح كل
             مساحة عناية تستحقها، بفريق متخصص ومعدات حديثة ومواد آمنة. لأن
             النظافة الحقيقية ليست مجرد مظهر، بل راحة تبدأ من التفاصيل.
-          </p>
+          </p> */}
 
           <div className="mt-8 flex gap-3">
             <a
@@ -71,14 +71,14 @@ export default function Hero() {
             </Link>
           </div>
 
-          <ul className="mt-8 hidden flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-navy/80 md:flex">
+          {/* <ul className="mt-8 hidden flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-navy/80 md:flex">
             {TRUST_POINTS.map((point) => (
               <li key={point} className="flex items-center gap-2">
                 <FaCircleCheck className="text-primary-ink" />
                 {point}
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
 
         {/* الصورة داخل الإطار العضوي المتموّج */}

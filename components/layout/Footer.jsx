@@ -35,9 +35,8 @@ export default function Footer() {
         <div>
           <Logo className="h-16 w-36 md:w-46" />
           <p className="mt-5 max-w-xs text-small leading-loose text-white/70">
-            نقدّم حلول تنظيف متكاملة للمنازل والفلل والشقق والمنشآت في{" "}
-            {COMPANY.city} وعدد من أحياء الرياض، لنمنحك بيئة نظيفة ومنعشة تنعم
-            فيها بالراحة والاطمئنان.
+            نقدّم حلول تنظيف متكاملة للمنازل والفلل والشقق والمنشآت، لنمنحك بيئة
+            نظيفة ومنعشة تنعم فيها بالراحة والاطمئنان.
           </p>
           {ACTIVE_SOCIALS.length > 0 && (
             <div className="mt-6 flex gap-2.5">

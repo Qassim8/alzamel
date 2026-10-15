@@ -1,3 +1,5 @@
+import About from "@/components/sections/About";
+import BeforeAfter from "@/components/sections/BeforeAfter";
 import CTABanner from "@/components/sections/CTABanner";
 import Coverage from "@/components/sections/Coverage";
 import FaqSection from "@/components/sections/FaqSection";
@@ -5,6 +7,8 @@ import Gallery from "@/components/sections/Gallery";
 import Hero from "@/components/sections/Hero";
 import Method from "@/components/sections/Method";
 import Packages from "@/components/sections/Packages";
+import Partners from "@/components/sections/Partners";
+import PriceEstimator from "@/components/sections/PriceEstimator";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import Testimonials from "@/components/sections/Testimonials";
@@ -64,11 +68,16 @@ export default function HomePage() {
         </div>
       </section>
 
+      <About />
       <WhyUs />
       <Method />
       <Gallery />
+      <BeforeAfter />
       <Testimonials />
       <Packages />
+      <PriceEstimator />
+
+      <Partners />
 
       <FaqSection items={HOME_FAQS} showAsk />
 

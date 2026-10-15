@@ -285,6 +285,25 @@ main#main > section.bg-navy-grad {
   transform: none;
 }
 
+/* ═══ شريط شركاء النجاح ═══ */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════
    الهيرو — فقاعات صابون ملوّنة + شكل متدرّج يتنفّس
    ═══════════════════════════════════════════════════════════ */
@@ -424,6 +443,7 @@ main#main > section.bg-navy-grad {
   [class*="animate-"] {
     animation: none !important;
   }
+  .marquee-track,
   .bubble,
   .bubble::before,
   .hero-blob-bg,
