@@ -16,7 +16,7 @@ import WhyUs from "@/components/sections/WhyUs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { FAQS } from "@/lib/content/faqs";
 import JsonLd from "@/components/seo/JsonLd";
-import { breadcrumbSchema, faqSchema } from "@/lib/seo";
+import { aboutSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 /* الأسئلة الظاهرة في الصفحة — نفسها المستخدمة في بيانات FAQPage
    حتى تتطابق البيانات المنظّمة مع المحتوى المرئي (شرط Google). */
@@ -28,7 +28,7 @@ export const metadata = {
     absolute: "شركة تنظيف في الرياض | الزامل كلين — نظافة تأهيلية وتنظيف عميق",
   },
   description:
-    "الزامل كلين شركة تنظيف في الرياض: نظافة تأهيلية بعد التشطيب، تنظيف عميق وتعقيم للمنازل والفلل، تنظيف كنب وسجاد وستائر، غسيل خزانات، واجهات وأحواش، ومكافحة حشرات. باقات دورية وعقود للمنشآت — احجز عبر واتساب.",
+    "شركة تنظيف في الرياض: نظافة تأهيلية، تنظيف عميق وتعقيم، كنب وسجاد وستائر، خزانات وواجهات، ومكافحة حشرات. أسعار معلنة تبدأ من ٤٥٠ ر.س — احجز عبر واتساب.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "شركة تنظيف في الرياض | الزامل كلين",
@@ -49,6 +49,7 @@ export default function HomePage() {
         data={[
           breadcrumbSchema([{ name: "الرئيسية", path: "/" }]),
           faqSchema(HOME_FAQS),
+          aboutSchema,
         ]}
       />
 

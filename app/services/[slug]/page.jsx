@@ -33,10 +33,12 @@ export async function generateMetadata({ params }) {
   if (!service) return {};
 
   const title = `${service.titleAr} في ${PRIMARY_CITY}`;
+  // الوصف يُقتطع عند أول جملة ليبقى ضمن ما يعرضه Google (~160 حرفاً)
+  const firstSentence = service.descAr.split("،")[0];
   const priceLine = service.priceFrom
-    ? ` الأسعار تبدأ من ${service.priceFrom.display}.`
+    ? ` تبدأ من ${service.priceFrom.display}.`
     : "";
-  const description = `${service.descAr}${priceLine} اطلب الخدمة من الزامل كلين عبر واتساب.`;
+  const description = `${service.titleAr} في ${PRIMARY_CITY} — ${firstSentence}.${priceLine} احجز من الزامل كلين عبر واتساب.`;
 
   return {
     title,
@@ -195,7 +197,7 @@ export default async function ServicePage({ params }) {
               <Reveal key={r.slug} delay={i * 110}>
                 <Link
                   href={`/services/${r.slug}`}
-                  className="group flex h-full flex-col p-6 card transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-azure/35 hover:shadow-lift"
+                  className="group flex h-full flex-col card p-6 transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-azure/35 hover:shadow-lift"
                 >
                   <span className="mb-4 icon-box">
                     <Icon name={r.icon} />

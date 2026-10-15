@@ -9,12 +9,12 @@ import { SERVICES } from "@/lib/content/services";
 import { ar } from "@/lib/format";
 import JsonLd from "@/components/seo/JsonLd";
 import { FAQS } from "@/lib/content/faqs";
-import { breadcrumbSchema, faqSchema } from "@/lib/seo";
+import { breadcrumbSchema, faqSchema, serviceListSchema } from "@/lib/seo";
 
 export const metadata = {
   title: "خدمات التنظيف في الرياض — ١٢ خدمة متخصصة",
   description:
-    "خدمات الزامل كلين في الرياض: نظافة تأهيلية بعد التشطيب، تنظيف عميق وتعقيم، تنظيف كنب ومفروشات، سجاد وموكيت، خيام وبيوت شعر، ستائر ونوافذ، مطابخ ودورات مياه، واجهات وأحواش، حدائق، خزانات مياه، ثريات، ومكافحة حشرات.",
+    "١٢ خدمة تنظيف متخصصة في الرياض: نظافة تأهيلية، تنظيف عميق، كنب وسجاد، ستائر ونوافذ، مطابخ ودورات مياه، خزانات، واجهات، ومكافحة حشرات. لكل خدمة صفحتها وسعرها.",
   alternates: { canonical: "/services" },
   openGraph: {
     title: "خدمات التنظيف في الرياض — ١٢ خدمة متخصصة",
@@ -35,6 +35,7 @@ export default function ServicesPage() {
             { name: "خدماتنا", path: "/services" },
           ]),
           faqSchema(FAQS),
+          serviceListSchema(),
         ]}
       />
 
