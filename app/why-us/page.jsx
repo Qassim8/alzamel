@@ -7,6 +7,8 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import StatsStrip from "@/components/sections/StatsStrip";
 import CTABanner from "@/components/sections/CTABanner";
+import About from "@/components/sections/About";
+import Partners from "@/components/sections/Partners";
 import Reveal from "@/components/ui/Reveal";
 import Icon from "@/components/ui/Icon";
 import { COMPANY } from "@/lib/content/company";
@@ -85,6 +87,8 @@ export default function WhyUsPage() {
         </div>
       </section>
 
+      <About />
+
       {/* مبادئ الهوية */}
       <section className="relative overflow-hidden bg-navy-grad section">
         <LogoMark
@@ -159,6 +163,8 @@ export default function WhyUsPage() {
         title="هكذا يصلك الفريق"
         subtitle="زيّ موحّد بألوان العلامة ومعدات جاهزة في كل زيارة."
       />
+
+      <Partners />
 
       <CTABanner tone="light" />
     </>
