@@ -2,7 +2,6 @@
 import { useRef } from "react";
 import { FaCalculator, FaXmark } from "react-icons/fa6";
 import PriceEstimatorForm from "@/components/sections/PriceEstimatorForm";
-import { FaSearchDollar } from "react-icons/fa";
 
 export default function QuickPriceFloat() {
   const dialogRef = useRef(null);
@@ -22,15 +21,16 @@ export default function QuickPriceFloat() {
         onClick={openEstimator}
         aria-haspopup="dialog"
         aria-controls="quick-price-dialog"
-        aria-label="احصل على سعر الخدمة"
-        className="quick-price-float group fixed inset-s-5 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-50 flex cursor-pointer items-center gap-0 overflow-hidden rounded-full bg-navy p-0 text-small font-bold text-white shadow-lift transition-all duration-300 ease-brand hover:gap-2 hover:pe-5 focus-visible:gap-2 focus-visible:pe-5 sm:bottom-24"
+        aria-label="تقدير سعر الخدمة"
+        className="fixed inset-s-4 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-50 flex cursor-pointer items-center gap-2.5 rounded-full bg-navy py-2.5 ps-2.5 pe-4 text-xs font-bold text-white shadow-lift transition-all duration-300 ease-brand hover:scale-105 focus-visible:scale-105 sm:bottom-24 sm:py-3 sm:ps-3 sm:pe-5 sm:text-sm"
       >
-        <span className="quick-price-icon flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-turquoise text-[26px] text-navy">
-          <FaSearchDollar />
+        {/* أيقونة الحاسبة المعبرة */}
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-turquoise text-sm text-navy shadow-sm sm:h-10 sm:w-10 sm:text-base">
+          <FaCalculator />
         </span>
-        <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 ease-brand group-hover:max-w-40 group-hover:opacity-100 group-focus-visible:max-w-40 group-focus-visible:opacity-100">
-          احصل على سعر الخدمة
-        </span>
+
+        {/* النص ظاهر دائماً بشكل مدمج وأنيق بدون الحاجة للضغط أو التمرير */}
+        <span className="tracking-tight whitespace-nowrap">اعرف السعر</span>
       </button>
 
       <dialog
