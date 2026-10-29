@@ -24,8 +24,8 @@ export default function About() {
               <Image
                 src="/images/04-sofa-team.webp"
                 alt="فريق الزامل كلين بالزيّ الموحّد أثناء تنظيف كنب في الرياض"
-                width={1000}
-                height={700}
+                width={1484}
+                height={1060}
                 sizes="(max-width: 1024px) 92vw, 500px"
                 className="h-72 w-full object-cover sm:h-96"
               />

@@ -54,8 +54,8 @@ export default function Method() {
               <Image
                 src="/images/courtyard-pressure-wash.webp"
                 alt="فريق الزامل كلين أثناء تنفيذ عملية تنظيف خارجية"
-                width={1000}
-                height={1500}
+                width={1280}
+                height={853}
                 sizes="(max-width: 1024px) 92vw, 520px"
                 className="h-[380px] w-full object-cover sm:h-[480px]"
               />

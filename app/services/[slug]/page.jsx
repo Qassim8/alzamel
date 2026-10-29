@@ -51,6 +51,17 @@ export async function generateMetadata({ params }) {
       description,
       url: `/services/${slug}`,
       type: "article",
+      // صورة الخدمة نفسها بدل صورة الموقع العامة
+      ...(service.image && {
+        images: [
+          {
+            url: service.image,
+            width: 1200,
+            height: 1600,
+            alt: service.imageAlt || service.titleAr,
+          },
+        ],
+      }),
     },
   };
 }
@@ -137,10 +148,10 @@ export default async function ServicePage({ params }) {
                 <Image
                   src={service.image}
                   alt={service.imageAlt || service.titleAr}
-                  width={1000}
-                  height={700}
+                  width={1200}
+                  height={1600}
                   sizes="(max-width: 1024px) 92vw, 460px"
-                  className="h-64 w-full object-cover sm:h-80"
+                  className="aspect-4/5 w-full object-cover"
                 />
               </div>
             )}
