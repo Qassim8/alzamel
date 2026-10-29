@@ -22,12 +22,12 @@ export default function About() {
           <div className="relative">
             <div className="overflow-hidden rounded-panel shadow-lift">
               <Image
-                src="/images/04-sofa-team.webp"
-                alt="فريق الزامل كلين بالزيّ الموحّد أثناء تنظيف كنب في الرياض"
-                width={1484}
-                height={1060}
+                src="/gallery/sofa-3.webp"
+                alt="فريق الزامل كلين بالزيّ الموحّد أثناء تنظيف كنب في مجلس بالرياض"
+                width={1200}
+                height={1600}
                 sizes="(max-width: 1024px) 92vw, 500px"
-                className="h-72 w-full object-cover sm:h-96"
+                className="aspect-4/5 w-full object-cover"
               />
             </div>
 
