@@ -18,3 +18,7 @@ npm-debug.log*
 # نظام التشغيل
 .DS_Store
 Thumbs.db
+
+# ملفات المعرض الأصلية (HEIC/MOV) — تبقى محلياً ولا تُرفع
+public/gallery/*.HEIC
+public/gallery/*.MOV
