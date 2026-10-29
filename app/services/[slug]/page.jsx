@@ -7,9 +7,11 @@ import PageHeader from "@/components/layout/PageHeader";
 import CTABanner from "@/components/sections/CTABanner";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import JsonLd from "@/components/seo/JsonLd";
+import VideoPlayer from "@/components/ui/VideoPlayer";
 import Icon from "@/components/ui/Icon";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { mediaForService } from "@/lib/content/gallery-items";
 import {
   SERVICES,
   getServiceBySlug,
@@ -49,6 +51,17 @@ export async function generateMetadata({ params }) {
       description,
       url: `/services/${slug}`,
       type: "article",
+      // صورة الخدمة نفسها بدل صورة الموقع العامة
+      ...(service.image && {
+        images: [
+          {
+            url: service.image,
+            width: 1200,
+            height: 1600,
+            alt: service.imageAlt || service.titleAr,
+          },
+        ],
+      }),
     },
   };
 }
@@ -59,6 +72,9 @@ export default async function ServicePage({ params }) {
   if (!service) notFound();
 
   const related = relatedServices(slug);
+  const media = mediaForService(slug);
+  const video = media.find((m) => m.type === "video");
+  const photos = media.filter((m) => m.type === "image");
 
   return (
     <>
@@ -132,10 +148,10 @@ export default async function ServicePage({ params }) {
                 <Image
                   src={service.image}
                   alt={service.imageAlt || service.titleAr}
-                  width={1000}
-                  height={700}
+                  width={1200}
+                  height={1600}
                   sizes="(max-width: 1024px) 92vw, 460px"
-                  className="h-64 w-full object-cover sm:h-80"
+                  className="aspect-4/5 w-full object-cover"
                 />
               </div>
             )}
@@ -172,8 +188,58 @@ export default async function ServicePage({ params }) {
         </div>
       </section>
 
+      {/* صور وفيديو من تنفيذ هذه الخدمة */}
+      {media.length > 0 && (
+        <section className="bg-mist section">
+          <div className="container-x">
+            <SectionHeading
+              label="من الميدان"
+              title={`${service.titleAr} — من تنفيذنا`}
+              subtitle="صور وفيديو حقيقية من عمل الفريق، لا صور مخزون."
+            />
+
+            <div className="grid gap-5 md:grid-cols-2">
+              {video && (
+                <Reveal className="md:row-span-2">
+                  <VideoPlayer
+                    src={video.src}
+                    poster={video.poster}
+                    title={video.title}
+                    alt={video.alt}
+                    className="aspect-4/5 h-full md:aspect-auto md:min-h-[32rem]"
+                  />
+                </Reveal>
+              )}
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                {photos.map((ph, i) => (
+                  <Reveal key={ph.src} delay={(i % 2) * 110}>
+                    <div className="group relative aspect-4/3 overflow-hidden rounded-brand shadow-card">
+                      <Image
+                        src={ph.src}
+                        alt={ph.alt}
+                        fill
+                        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 300px"
+                        className="object-cover transition-transform duration-700 ease-brand group-hover:scale-[1.06]"
+                      />
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+
+            <Reveal delay={150} className="mt-8 text-center">
+              <Link href="/gallery" className="btn-ghost">
+                شاهد معرض الأعمال كاملاً
+                <FaArrowLeftLong className="text-xs" />
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       {/* خطوات العمل */}
-      <section className="bg-mist section">
+      <section className="section">
         <div className="container-x">
           <SectionHeading
             label="كيف نعمل"

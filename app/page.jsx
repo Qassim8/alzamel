@@ -12,6 +12,7 @@ import PriceEstimator from "@/components/sections/PriceEstimator";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import Testimonials from "@/components/sections/Testimonials";
+import VideoShowcase from "@/components/sections/VideoShowcase";
 import WhyUs from "@/components/sections/WhyUs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { FAQS } from "@/lib/content/faqs";
@@ -73,6 +74,7 @@ export default function HomePage() {
       <WhyUs />
       <Method />
       <Gallery />
+      <VideoShowcase />
       <BeforeAfter />
       <Testimonials />
       <Packages />

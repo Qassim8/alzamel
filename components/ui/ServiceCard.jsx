@@ -26,14 +26,15 @@ export default function ServiceCard({ service, compact = false }) {
 
   return (
     <article className="group flex h-full card-hover flex-col overflow-hidden">
-      <div className="relative h-44 w-full overflow-hidden">
+      {/* نسبة ٤:٣ — الصور المصدرية عمودية، والارتفاع الضيق كان يقصّها بشدة */}
+      <div className="relative aspect-4/3 w-full overflow-hidden">
         {image ? (
           <>
             <Image
               src={image}
               alt={imageAlt || `${titleAr} — الزامل كلين في الرياض`}
-              width={1000}
-              height={700}
+              width={1200}
+              height={1600}
               sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 380px"
               className="h-full w-full object-cover transition-transform duration-700 ease-brand group-hover:scale-[1.06]"
             />

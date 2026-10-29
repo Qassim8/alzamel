@@ -7,7 +7,7 @@ import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import QuickPriceFloat from "@/components/layout/QuickPriceFloat";
 import JsonLd from "@/components/seo/JsonLd";
 import { COMPANY } from "@/lib/content/company";
-import { businessSchema, websiteSchema } from "@/lib/seo";
+import { businessSchema, organizationSchema, websiteSchema } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 /* الهوية تعتمد Arial (جروتسك محايد). على الويب نستخدم
@@ -53,7 +53,7 @@ export const metadata = {
   ],
   alternates: {
     canonical: "/",
-    languages: { "ar-SA": "/" },
+    languages: { "ar-SA": "/", "x-default": "/" },
   },
   openGraph: {
     type: "website",
@@ -126,7 +126,7 @@ export default function RootLayout({ children }) {
         <WhatsAppFloat />
         <QuickPriceFloat />
         <MobileActionBar />
-        <JsonLd data={[businessSchema, websiteSchema]} />
+        <JsonLd data={[organizationSchema, businessSchema, websiteSchema]} />
       </body>
     </html>
   );

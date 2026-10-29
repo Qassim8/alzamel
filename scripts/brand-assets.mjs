@@ -87,3 +87,23 @@ await writeFile(
   "utf8",
 );
 console.log("✓ app/opengraph-image.alt.txt");
+
+// ── شعار جوجل: صورة نقطية مربّعة.
+// Google لا يقبل SVG في نتيجة الشعار، ويشترط ألا يقل عن 112×112.
+{
+  const SIZE = 512;
+  const mark = await markPng(Math.round(SIZE * 0.66));
+  const out = path.join(ROOT, "public/brand/logo-google.png");
+  await sharp({
+    create: {
+      width: SIZE,
+      height: SIZE,
+      channels: 4,
+      background: { r: 255, g: 255, b: 255, alpha: 1 },
+    },
+  })
+    .composite([{ input: mark, gravity: "center" }])
+    .png()
+    .toFile(out);
+  console.log("✓ public/brand/logo-google.png (512×512)");
+}

@@ -52,12 +52,12 @@ export default function Method() {
           <div className="relative">
             <div className="overflow-hidden rounded-panel shadow-lift">
               <Image
-                src="/images/courtyard-pressure-wash.webp"
-                alt="فريق الزامل كلين أثناء تنفيذ عملية تنظيف خارجية"
-                width={1000}
-                height={1500}
+                src="/gallery/carpet-4.webp"
+                alt="فنّي الزامل كلين ينظّف سجادة منقوشة بمكنسة متخصصة"
+                width={1200}
+                height={1600}
                 sizes="(max-width: 1024px) 92vw, 520px"
-                className="h-[380px] w-full object-cover sm:h-[480px]"
+                className="aspect-4/5 w-full object-cover"
               />
             </div>
             {/* النص هنا شعار الشركة اللفظي لا اقتباس عميل — فالعلامة هي المتحدّث */}
