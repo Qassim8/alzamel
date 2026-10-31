@@ -60,7 +60,7 @@ export default function GalleryPage() {
       <PageHeader
         label="معرض الأعمال"
         title="شاهد عملنا بعينك"
-        subtitle={`${ar(PHOTOS.length)} صورة و${ar(VIDEOS.length)} مقاطع فيديو من تنفيذ فريقنا — لا صور مخزون ولا مشاهد مُعادة.`}
+        subtitle={` صورة ومقاطع فيديو من تنفيذ فريقنا.`}
       />
 
       <section className="section">

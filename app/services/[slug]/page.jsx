@@ -91,7 +91,7 @@ export default async function ServicePage({ params }) {
 
       <PageHeader
         label="خدماتنا"
-        title={`${service.titleAr} في ${PRIMARY_CITY}`}
+        title={`${service.titleAr}`}
         subtitle={service.descAr}
       />
 
