@@ -60,11 +60,6 @@ export default function GalleryGrid() {
       {/* فلاتر الفئات */}
       <div className="mb-8 flex flex-wrap justify-center gap-2">
         {GALLERY_CATEGORIES.map((c) => {
-          const count =
-            c.id === "all"
-              ? GALLERY_ITEMS.length
-              : GALLERY_ITEMS.filter((i) => i.category === c.id).length;
-          if (!count) return null;
           const on = cat === c.id;
           return (
             <button
@@ -82,9 +77,9 @@ export default function GalleryGrid() {
               }`}
             >
               {c.label}
-              <span className={`ms-1.5 ${on ? "text-white/70" : "text-muted"}`}>
-                {ar(count)}
-              </span>
+              <span
+                className={`ms-1.5 ${on ? "text-white/70" : "text-muted"}`}
+              ></span>
             </button>
           );
         })}
