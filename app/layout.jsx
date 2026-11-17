@@ -6,6 +6,7 @@ import MobileActionBar from "@/components/layout/MobileActionBar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import QuickPriceFloat from "@/components/layout/QuickPriceFloat";
 import JsonLd from "@/components/seo/JsonLd";
+import PageLoader from "@/components/ui/PageLoader";
 import { COMPANY } from "@/lib/content/company";
 import { businessSchema, organizationSchema, websiteSchema } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -118,6 +119,7 @@ export default function RootLayout({ children }) {
         >
           تخطّي إلى المحتوى
         </a>
+        <PageLoader />
         <Navbar />
         <main id="main" className="pt-(--nav-h)">
           {children}
