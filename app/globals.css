@@ -519,8 +519,6 @@ main#main > section.bg-navy-grad {
    مشروطة بالكلاس js: بدون جافاسكربت لا تظهر فلا تحجب الموقع أبداً.
    ═══════════════════════════════════════════════════════════ */
 .page-loader {
-  /* مدّة مسحة عمود الرغوة عبر الشاشة */
-  --sweep: 1.4s;
   position: fixed;
   inset: 0;
   z-index: 200; /* فوق كل الطبقات — أعلى ما في الموقع z-100 */
@@ -567,52 +565,49 @@ html:not(.js) .page-loader {
   }
 }
 
-/* عمود الرغوة: كتلة واحدة تعبر الشاشة من اليمين لليسار.
-   الحركة على الحاوية وحدها — طبقة مركّبة واحدة، لا ٣٢ حركة. */
-.page-loader-foam {
+/* فقاعات صابون تصعد من الأسفل */
+.page-loader-bubbles {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 100%;
-  width: 170px;
+  inset: 0;
   pointer-events: none;
-  animation: loader-foam var(--sweep) ease-in-out infinite;
 }
 
-/* 100vw يعبر الشاشة، والزيادة تُخرج العمود كاملاً من الإطار */
-@keyframes loader-foam {
-  0% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  88% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(calc(-100vw - 180px));
-    opacity: 0;
-  }
-}
-
-/* فقاعة واحدة — ثابتة داخل العمود، متداخلة مع جاراتها */
 .loader-bubble {
   position: absolute;
-  top: var(--y, 50%);
-  left: calc(50% + var(--x, 0px));
+  bottom: -18%;
+  left: var(--x, 50%);
   width: var(--s, 24px);
   height: var(--s, 24px);
   border-radius: 9999px;
-  transform: translate(-50%, -50%);
   background: radial-gradient(
     closest-side,
-    rgba(255, 255, 255, 0.62) 0 44%,
-    rgba(2, 184, 210, 0.16) 72%,
-    rgba(2, 127, 211, 0.34) 100%
+    rgba(255, 255, 255, 0.7) 0 42%,
+    rgba(2, 184, 210, 0.14) 70%,
+    rgba(2, 127, 211, 0.3) 100%
   );
-  box-shadow: inset 0 0 0 1.1px rgba(2, 153, 223, 0.42);
+  box-shadow:
+    inset 0 0 0 1.2px rgba(2, 153, 223, 0.4),
+    0 8px 18px -10px rgba(2, 127, 211, 0.45);
+  animation: loader-rise var(--d, 5s) linear var(--delay, 0s) infinite;
+}
+
+/* الانحراف الأفقي يختلف لكل فقاعة (--drift) فلا تصعد كلّها
+   على المسار نفسه — فقاعات صابون لا فقاعات غاز متوازية. */
+@keyframes loader-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.85);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--drift, 14px), -108vh, 0) scale(1.1);
+    opacity: 0;
+  }
 }
 
 /* شريط تقدّم غير محدّد — يمسح من اليمين إلى اليسار (RTL) */
@@ -673,7 +668,7 @@ html:not(.js) .page-loader {
   }
   /* شاشة التحميل تبقى تعمل، لكن بلا حركة: شريط ساكن أو فقاعات
      صاعدة بلا حركة يبدوان معطّلين — فنُسقطهما ونُبقي العلامة. */
-  .page-loader-foam,
+  .page-loader-bubbles,
   .page-loader-bar {
     display: none;
   }
