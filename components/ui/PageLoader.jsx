@@ -6,6 +6,9 @@ import { LogoMark } from "@/components/ui/Logo";
 /**
  * شاشة التحميل — عند الدخول للموقع وعند التنقل بين الصفحات.
  *
+ * الاستعارة: ممسحة تعبر الشاشة — حافة تتقدّم والصابون والرغوة
+ * أمامها، وخلفها تبقى الشاشة نظيفة. لغة التنظيف نفسها.
+ *
  * مكوّن عميل، لكن Next يرسم ترميزه في HTML الثابت أيضاً، فالشاشة
  * موجودة في أول رسم قبل أن تعمل جافاسكربت — لا وميض صفحة نصف جاهزة.
  *
@@ -16,19 +19,24 @@ import { LogoMark } from "@/components/ui/Logo";
  *     (انتقال متوقّف يعني شاشة معتمة تعترض كل نقرة).
  */
 
-/* الفقاعات تصعد من الأسفل — x موضع أفقي، s القطر، d المدة، delay إزاحة
-   سالبة حتى تبدأ المجموعة في منتصف دورتها فتبدو الحركة جارية من اللحظة الأولى. */
+/* رغوة الممسحة — y موضع رأسي، s القطر، bob انحراف رأسي بسيط أثناء
+   المسح فلا تبدو الحركة آلية. التأخير سالب فتسبق الحافة وتبقى ضمن
+   شريط الصابون أمامها: الممسحة تدفع الماء أمامها وتترك خلفها نظيفاً. */
 const BUBBLES = [
-  { x: "11%", size: 30, dur: 4.6, delay: -0.4 },
-  { x: "25%", size: 18, dur: 3.8, delay: -2.1 },
-  { x: "38%", size: 42, dur: 5.6, delay: -1.2 },
-  { x: "52%", size: 22, dur: 4.2, delay: -3 },
-  { x: "66%", size: 34, dur: 5.1, delay: -0.8 },
-  { x: "79%", size: 20, dur: 3.9, delay: -2.6 },
-  { x: "90%", size: 28, dur: 4.8, delay: -1.6 },
+  { y: "10%", size: 14, delay: -0.18, bob: -12 },
+  { y: "18%", size: 24, delay: -0.07, bob: 8 },
+  { y: "27%", size: 10, delay: -0.29, bob: -6 },
+  { y: "35%", size: 28, delay: -0.03, bob: 10 },
+  { y: "44%", size: 16, delay: -0.21, bob: -9 },
+  { y: "52%", size: 12, delay: -0.34, bob: 7 },
+  { y: "60%", size: 26, delay: -0.1, bob: -11 },
+  { y: "68%", size: 9, delay: -0.26, bob: 6 },
+  { y: "76%", size: 20, delay: -0.05, bob: 9 },
+  { y: "84%", size: 13, delay: -0.32, bob: -7 },
+  { y: "91%", size: 22, delay: -0.14, bob: 5 },
 ];
 
-const MIN_VISIBLE = 450; // أقل مدة ظهور — لودر يلمع ٨٠ms أسوأ من لا لودر
+const MIN_VISIBLE = 700; // تكفي لرؤية مسحة كاملة — لودر لا يُرى بلا فائدة
 const BOOT_CAP = 2200; // سقف الدخول للموقع
 const NAV_DELAY = 140; // الصفحات ثابتة ومعظم الانتقالات أسرع من هذا
 const NAV_CAP = 8000; // سقف الانتقال
@@ -146,16 +154,18 @@ export default function PageLoader() {
     >
       <span className="sr-only">جارٍ التحميل</span>
 
+      <span className="page-loader-wipe" aria-hidden="true" />
+
       <span className="page-loader-bubbles" aria-hidden="true">
         {BUBBLES.map((b, i) => (
           <span
             key={i}
             className="loader-bubble"
             style={{
-              "--x": b.x,
+              "--y": b.y,
               "--s": `${b.size}px`,
-              "--d": `${b.dur}s`,
               "--delay": `${b.delay}s`,
+              "--bob": `${b.bob}px`,
             }}
           />
         ))}
